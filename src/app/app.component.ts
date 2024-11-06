@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { NavigationLinksComponent } from './components/navigation/navigation-links.component';
 
 @Component({
 	selector: 'app-root',
 	standalone: true,
-	imports: [CommonModule, ToolbarComponent],
+	imports: [CommonModule, NavigationLinksComponent],
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss']
 })

@@ -1,0 +1,11 @@
+// Application theme styles
+
+// imports
+@import './../node_modules/@angular/material/theming';
+@import 'assets/sass/vars';
+
+// Include the common styles for Angular Material
+@include mat-core();
+
+// Define the primary, accent, and warn pallettes using your variables or custom values
+$custom-primary: mat-palette($mat-indigo);
