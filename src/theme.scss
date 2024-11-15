@@ -1,11 +1,32 @@
 // Application theme styles
 
-// imports
-@import './../node_modules/@angular/material/theming';
+// Import Angular Material theming
+@use '@angular/material' as mat;
+
+// Optionally, import other files that define custom mixins and variables
 @import 'assets/sass/vars';
 
-// Include the common styles for Angular Material
-@include mat-core();
+// Define custom color palettes
+$webPortfolio-primary: mat.define-palette(mat.$indigo-palette);
+$webPortfolio-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$webPortfolio-warn: mat.define-palette(mat.$red-palette);
 
-// Define the primary, accent, and warn pallettes using your variables or custom values
-$custom-primary: mat-palette($mat-indigo);
+// Define the typography configurations if needed. This is optional.
+$webPortfolio-typography: mat.define-typography-config();
+
+// Create the theme object. A theme consists of configurations for individual theming systems such as "color" or "typography".
+$webPortfolio-theme: mat.define-light-theme(
+	(
+		color: (
+			primary: $webPortfolio-primary,
+			accent: $webPortfolio-accent,
+			warn: $webPortfolio-warn
+		),
+		typography: $webPortfolio-typography
+	)
+);
+
+// Include the Angular Material theming styles with the custom theme
+@include mat.core();
+@include mat.all-component-themes($webPortfolio-theme);
+@include mat.all-component-typographies($webPortfolio-theme);

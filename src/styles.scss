@@ -1,15 +1,36 @@
 // global styles...I think
+/* Global Imports */
+@import 'src/assets/sass/vars.scss';
+@import 'theme';
+
+/* Tailwind CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import 'theme';
 
+/* Base styles */
 html,
 body {
 	height: 100%;
-}
-
-body {
 	margin: 0;
 	font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.container {
+	width: 90%;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+/* Utility classes */
+.mt-1 {
+	margin-top: 1rem;
+}
+
+.mb-1 {
+	margin-bottom: 1rem;
+}
+
+.p-1 {
+	padding: 1rem;
 }

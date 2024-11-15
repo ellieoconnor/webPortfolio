@@ -1,10 +1,28 @@
+<!-- app.component.html -->
 <div>
 	<div class="modal-overlay">
-		<!--		add an ngif for showing the modal overlay for loading the screen-->
-		<div class="container" #websiteContent>
+		<!-- Modal overlay to show during loading, controlled by an ngIf directive -->
+	</div>
+
+	<div class="container" #websiteContent>
+		<!-- Header section with Angular Material toolbar -->
+		<header>
+			<!-- Navigation links component -->
 			<app-navigation-links #navigationHeader></app-navigation-links>
-			<!--   place router here for selected items in the navigation   -->
-			<!--   Will need loading icon or something for the cases of loading   -->
-		</div>
+			<app-about-header></app-about-header>
+		</header>
+
+		<!-- Main content area with router outlet for dynamic content -->
+		<main>
+			<!-- Router outlet for loading different components based on the route -->
+			<!--			<router-outlet></router-outlet>-->
+		</main>
+
+		<!-- Footer section -->
+		<footer>
+			<mat-toolbar color="accent">
+				<span>Footer Content</span>
+			</mat-toolbar>
+		</footer>
 	</div>
 </div>
