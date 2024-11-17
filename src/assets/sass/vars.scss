@@ -1,16 +1,103 @@
 // Variables for the application
-$primary-color: #7887da;
-$secondary-color: #5f4f7e;
-$warn-color: #cf4747;
+/**
+This file should contain all global variables, including colour schemes, spacing units, font sizes, etc.
+It can also have mixins and functions that are to be reused throughout the project.
+ */
 
+/***************************
+Colour Variables
+***************************/
+// Primary Colours
+$primaryColor: #253D5B; // prussian blue
+//$primaryColor: #3b71ca;
+$secondaryColor: #9FC2CC; // light blue
+//$secondaryColor: #9fa6b2;
+$successColor: #14a44d;
+$errorColor: #dc4c64;
+$warnColor: #ff9800;
+$infoColor: #54b4d3;
+
+// Neutral Colours
+$lightColor: #fbfbfb;
+$darkColor: #332d2d;
+$greyColor: #67697C; // dim gray
+$lightgreyColor: #e5e7fd;
+
+// Button Colours
+$btn-primary-bg: $primaryColor;
+$btn-primary-color: #fff;
+$btn-secondary-bg: $secondaryColor;
+$btn-secondary-color: #fff;
+
+// Button Hover/Active States
+$btn-primary-hover-bg: lighten($primaryColor, 10%);
+$btn-primary-active-bg: darken($primaryColor, 10%);
+$btn-secondary-hover-bg: lighten($secondaryColor, 10%);
+$btn-secondary-active-bg: darken($secondaryColor, 10%);
+
+/***************************
+Font and Spacing Variables
+***************************/
+// Font Sizes
 $font-size-base: 16px;
-$spacing-unit: 8px;
+$font-size-large: 18px;
+$font-size-small: 12px;
 
+// Spacing Units
+$spacing-unit: 8px; // base spacing unit
+$spacing-unit-half: $spacing-unit / 2;
+$spacing-small: 4px;
+$spacing-large: 16px;
+
+/***************************
+Design Properties
+***************************/
+$border-radius: 5px; //default border radius
+$box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // default box shadow
+
+/***************************
+CSS Custom Properties
+***************************/
 :root {
-  --primary-color: #{$primary-color};
-  --secondary-color: #{$secondary-color};
+  /* Color variables */
+  --primaryColor: #{$primaryColor};
+  --secondaryColor: #{$secondaryColor};
+  --successColor: #{$successColor};
+  --warnColor: #{$warnColor};
+  --errorColor: #{$errorColor};
+  --infoColor: #{$infoColor};
+
+  --light-color: #{$lightColor};
+  --dark-color: #{$darkColor};
+  --grayColor: #{$greyColor};
+  --lightgreyColor: #{$lightgreyColor};
+
+  /* Button variables */
+  --btn-primary-bg: #{$btn-primary-bg};
+  --btn-primary-color: #{$btn-primary-color};
+  --btn-secondary-bg: #{$btn-secondary-bg};
+  --btn-secondary-color: #{$btn-secondary-color};
+
+  /* Button Hover/Active States */
+  --btn-primary-hover-bg: #{lighten($primaryColor, 10%)};
+  --btn-primary-active-bg: #{darken($primaryColor, 10%)};
+  --btn-secondary-hover-bg: #{lighten($secondaryColor, 10%)};
+  --btn-secondary-active-bg: #{darken($secondaryColor, 10%)};
+
+  /* Font size variables */
   --font-size-base: #{$font-size-base};
+  --font-size-large: #{$font-size-large};
+  --font-size-small: #{$font-size-small};
+
+  /* Spacing variables */
   --spacing-unit: #{$spacing-unit};
+  --spacing-unit-half: #{$spacing-unit-half};
+  --spacing-small: #{$spacing-small};
+  --spacing-large: #{$spacing-large};
+
+  /* Design Properties */
+  --border-radius: #{$border-radius};
+  --box-shadow: #{$box-shadow};
 }
 
 // Variables from mdbootstrap mdb-ui-kit https://github.com/mdbootstrap/mdb-ui-kit/blob/master/src/scss/free/_variables.scss

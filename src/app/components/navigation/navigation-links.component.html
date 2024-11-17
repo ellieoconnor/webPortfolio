@@ -3,7 +3,13 @@
 	<a mat-list-item href="#">Blog</a>
 	<a mat-list-item href="#">Git</a>
 	<a mat-list-item href="#">Contact Me</a>
-	<div>
-		<button>Dark/Light</button>
-	</div>
+	<!-- Dark and Light Mode Toggle Button -->
+	<button (click)="toggleDarkMode()">
+		<ng-container *ngIf="isDarkMode; else lightModeTemplate">
+			<fa-icon [icon]="icons.darkModeMoon"></fa-icon>
+		</ng-container>
+		<ng-template #lightModeTemplate>
+			<fa-icon [icon]="icons.lightModeSun"></fa-icon>
+		</ng-template>
+	</button>
 </mat-nav-list>

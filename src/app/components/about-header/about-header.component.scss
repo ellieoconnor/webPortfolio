@@ -1,7 +1,5 @@
 section {
 	display: flex;
-	flex-wrap: nowrap;
-	justify-content: space-evenly;
 	flex-direction: row;
 	align-items: center;
 }
@@ -9,7 +7,7 @@ section {
 .profile-pic {
 	width: 200px;
 	height: auto;
-	margin-left: 1rem;
+	margin-left: 3rem;
 	object-fit: cover; /* Ensures the image covers the container uniformly. */
 }
 
@@ -19,6 +17,7 @@ section {
 	flex-wrap: wrap;
 	max-width: 600px;
 	margin-bottom: 1rem;
+	margin-right: 3rem;
 }
 
 .text-container h1 {

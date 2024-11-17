@@ -3,3 +3,10 @@
 	flex-direction: row;
 	margin-bottom: 1rem;
 }
+
+button {
+	background-color: var(--lightgreyColor);
+	width: 150px;
+	height: 30px;
+	border-radius: var(--border-radius);
+}

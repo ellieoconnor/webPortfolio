@@ -1,6 +1,6 @@
 <!-- app.component.html -->
 <div>
-	<div class="modal-overlay">
+	<div class="modal-overlay" *ngIf="isLoading">
 		<!-- Modal overlay to show during loading, controlled by an ngIf directive -->
 	</div>
 
@@ -18,12 +18,5 @@
 			<!--			<router-outlet></router-outlet>-->
 			<app-featured-items></app-featured-items>
 		</main>
-
-		<!-- Footer section -->
-		<footer>
-			<mat-toolbar color="accent">
-				<span>Footer Content</span>
-			</mat-toolbar>
-		</footer>
 	</div>
 </div>

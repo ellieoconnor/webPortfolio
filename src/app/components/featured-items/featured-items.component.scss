@@ -1,12 +1,15 @@
 .featured-items-container {
+	min-height: 250px;
 	display: flex;
 	flex-direction: row;
 }
 
 mat-card {
-	margin-left: 1rem;
+	margin-right: 1rem;
+	margin-bottom: 1.5rem;
+	min-height: 100%;
 	max-width: 30%;
-	border: solid var(--primary-color) 2px;
+	border: solid var(--primaryColor) 2px;
 }
 
 mat-card-footer {
@@ -14,8 +17,13 @@ mat-card-footer {
 	flex-direction: row;
 	margin-left: 1rem;
 	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
 }
 
 .publish-date {
-	margin-left: 0.25rem;
+	margin-left: 0.5rem;
+}
+
+.more-articles {
+	margin-bottom: 1rem;
 }
