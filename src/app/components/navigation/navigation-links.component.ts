@@ -23,11 +23,4 @@ export class NavigationLinksComponent {
 		darkModeMoon: faMoon,
 		lightModeSun: faSun
 	};
-
-	toggleDarkMode() {
-		this.isDarkMode = !this.isDarkMode;
-		// EO Note: make the theme dark mode or light. Should maybe use in a theme service
-		// if (this.isDarkMode) {
-		// }
-	}
 }
