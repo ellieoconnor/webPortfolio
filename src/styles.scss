@@ -7,13 +7,21 @@
 /* Global Imports */
 //@import 'src/assets/sass/vars.scss';
 @use '@angular/material' as mat;
-@use "src/m3-theme" as m3;
+@use "m3-theme" as m3;
 @include mat.core();
 
 :root {
   @include mat.all-component-themes(m3.$light-theme);
   @include mat.system-level-colors(m3.$light-theme);
   @include mat.system-level-typography(m3.$light-theme);
+  background-color: var(--sys-background);
+  color: var(--sys-on-background);
+}
+
+.dark {
+  @include mat.all-component-themes(m3.$dark-theme);
+  @include mat.all-component-colors(m3.$dark-theme);
+  @include mat.all-component-typographies(m3.$dark-theme);
 }
 
 /* Base styles */

@@ -11,7 +11,7 @@ import { FeaturedItemsComponent } from './components/featured-items/featured-ite
   imports: [CommonModule, NavigationLinksComponent, MatToolbarModule, AboutHeaderComponent, FeaturedItemsComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  // encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
   title = 'webPortfolio';
