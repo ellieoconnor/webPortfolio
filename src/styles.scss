@@ -5,8 +5,16 @@
  */
 
 /* Global Imports */
-@import 'src/assets/sass/vars.scss';
-@import 'theme';
+//@import 'src/assets/sass/vars.scss';
+@use '@angular/material' as mat;
+@use "src/m3-theme" as m3;
+@include mat.core();
+
+:root {
+  @include mat.all-component-themes(m3.$light-theme);
+  @include mat.system-level-colors(m3.$light-theme);
+  @include mat.system-level-typography(m3.$light-theme);
+}
 
 /* Base styles */
 html,
@@ -19,8 +27,7 @@ body {
   min-width: 600px; // somewhat arbitrary min width, for forms to look "OK" and to know their min boundary.
   overflow: hidden;
   font-size: 16px;
-  color: var(--textColor);
-  background-color: var(--backgroundColor);
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
 }
 
 .container {
@@ -29,54 +36,21 @@ body {
   margin: 0 auto;
 }
 
-body.dark-mode {
-  background-color: var(--backgroundColorDark);
-  color: var(--textColorDark);
-}
-
-button {
-  background-color: var(--btn-primary-bg);
-  color: var(--btn-primary-color);
-  border: none;
-  padding: var(--spacing-unit);
-  border-radius: var(--border-radius);
-
-  &:hover {
-    background-color: var(--btn-primary-bg-hover);
-  }
-
-  &:active {
-    background-color: var(--btn-primary-bg-active);
-  }
-}
-
-body.dark-mode button {
-  background-color: var(--btn-primary-bg-dark);
-  color: var(--btn-primary-color-dark);
-
-  &:hover {
-    background-color: var(--btn-primary-bg-hover-dark);
-  }
-
-  &:active {
-    background-color: var(--btn-primary-bg-active-dark);
-  }
-}
 
 
 /**
-TODO List
-todo: Standard theme colors
-todo: Add button style and behaviour (hover, pointer, color, etc)
-todo: Add loading icon (spinner or something free) and modal overlay when loading
-todo: Add error messaging for the site
-todo:
- */
-
-/*****************
-	Standard Colors
-*****************/
-
-/*****************
-	Font Icon Buttons
-*****************/
+//TODO List
+//todo: Standard theme colors
+//todo: Add button style and behaviour (hover, pointer, color, etc)
+//todo: Add loading icon (spinner or something free) and modal overlay when loading
+//todo: Add error messaging for the site
+//todo:
+// */
+//
+///*****************
+//	Standard Colors
+//*****************/
+//
+///*****************
+//	Font Icon Buttons
+//*****************/

@@ -22,9 +22,9 @@ export class ThemeLogicService {
     const htmlElement = document.documentElement;
 
     if(this.darkModeEnabled) {
-      htmlElement.classList.add('dark-mode');
+      htmlElement.classList.add('dark');
     } else {
-      htmlElement.classList.remove('dark-mode');
+      htmlElement.classList.remove('dark');
     }
   }
 }

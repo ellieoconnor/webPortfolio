@@ -115,8 +115,8 @@ $error-red-palette: (
 /***************************
 Custom Themes
 ***************************/
-$defaultTheme-primary: mat.m2-define-palette($prussian-blue-palette, 800, 400, 900);
-$defaultTheme-accent: mat.m2-define-palette($light-blue-palette, 200, 50, 400);
+$defaultTheme-primary: mat.define-palette($prussian-blue-palette, 800, 400, 900);
+$defaultTheme-accent: mat.define-palette($light-blue-palette, 200, 50, 400);
 // The warn palette is optional (defaults to red).
 $defaultTheme-warn: mat.m2-define-palette($error-red-palette, 500);
 

@@ -5,134 +5,208 @@ It can also have mixins and functions that are to be reused throughout the proje
  */
 
 @use 'sass:math';
-// todo: define a link color?
 
-/***************************
-Colour Variables
-***************************/
-// Primary Colours
-$primaryColor: #253D5B; // prussian blue
-//$primaryColor: #3b71ca;
-$secondaryColor: #bec7d7; // light blue
-//$secondaryColor: #9fa6b2;
-$backgroundColor: #fbfbfb; // Light mode background (light gray/white)
-$textColor: #000; // Light mode text (black/dark gray)
+/* These tokens are generated using https://themes.angular-material.dev/ */
+/* Preview: https://themes.angular-material.dev/?seed-error=%23ffb4ab&seed-neutral=%2377777a&seed-neutral-variant=%2374777e&seed-primary=%23253D5B&seed-secondary=%23bec7d7&seed-tertiary=%23e3bae0 */
+/* Seed Colors: primary: #253D5B, secondary: #bec7d7, tertiary: #e3bae0, error: #ffb4ab, neutral: #77777a, neutral-variant: #74777e */
 
-$successColor: #14a44d;
-$errorColor: #dc4c64;
-$warnColor: #ff9800;
-$infoColor: #54b4d3;
+/* Light Theme */
+:root, :host {
+  /*===================================
+   Primary Colours
+   ==================================*/
+  --sys-primary: #486080;
+  --sys-on-primary: #ffffff;
+  --sys-primary-container: #d3e4ff;
+  --sys-on-primary-container: #001c38;
 
-// Neutral Colours
-$lightColor: #fbfbfb;
-$darkColor: #332d2d;
-$greyColor: #67697C; // dim gray
-$lightgreyColor: #e5e7fd;
+    /* Fixed Primary Variants */
+  --sys-primary-fixed: #d3e4ff;
+  --sys-on-primary-fixed: #001c38;
+  --sys-on-primary-fixed-variant: #304867;
+  --sys-primary-fixed-dim: #b0c8ed;
 
-$neutralBackground: #77777a; /* To use for cards or containers in dark mode */
-$neutralBorderColor: #74777e; /* Subtle dividers or border color for dark mode */
-$neutralDisabled: #74777e; /* Use for disabled buttons or inputs */
+  /*===================================
+     Secondary Colours
+     ==================================*/
+  --sys-secondary: #565f6d;
+  --sys-on-secondary: #ffffff;
+  --sys-secondary-container: #dae3f3;
+  --sys-on-secondary-container: #131c28;
 
-// Button Colours
-$btn-primary-bg: $primaryColor; // Button background color
-$btn-primary-color: #fff; // button text color
-$btn-secondary-bg: $secondaryColor;
-$btn-secondary-color: #333;
+  /* Fixed Secondary Colour */
+  --sys-secondary-fixed: #dae3f3;
+  --sys-secondary-fixed-dim: #bec7d7;
+  --sys-on-secondary-fixed: #131c28;
+  --sys-on-secondary-fixed-variant: #3e4754;
 
-// Button Hover/Active States
-$btn-primary-hover-bg: lighten($primaryColor, 10%);
-$btn-primary-active-bg: darken($primaryColor, 10%);
-$btn-secondary-hover-bg: lighten($secondaryColor, 10%);
-$btn-secondary-active-bg: darken($secondaryColor, 10%);
+  /*===================================
+   Tertiary Colours
+   ==================================*/
+  --sys-tertiary: #755374;
+  --sys-on-tertiary: #ffffff;
+  --sys-tertiary-container: #ffd6fb;
+  --sys-on-tertiary-container: #2c112e;
 
-/***************************
-Font and Spacing Variables
-***************************/
-// Font Sizes
-$font-size-base: 16px;
-$font-size-large: 18px;
-$font-size-small: 12px;
+  /* Fixed Tertiary Variants */
+  --sys-tertiary-fixed: #ffd6fb;
+  --sys-tertiary-fixed-dim: #e3bae0;
+  --sys-on-tertiary-fixed: #2c112e;
+  --sys-on-tertiary-fixed-variant: #5b3c5b;
 
-// Spacing Units
-$spacing-unit: 8px; // base spacing unit
-$spacing-unit-half: math.div($spacing-unit, 2);
-$spacing-small: 4px;
-$spacing-large: 16px;
+  /*===================================
+   Background & Surface Colours
+   ==================================*/
+  --sys-background: #fcf8f8;
+  --sys-on-background: #1c1b1b;
 
-/***************************
-Design Properties
-***************************/
-$border-radius: 5px; //default border radius
-$box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // default box shadow
+  /* Surface Colours */
+  --sys-surface: #fcf8f8;
+  --sys-on-surface: #1c1b1b;
 
-/***************************
-CSS Custom Properties
-***************************/
-:root {
-  /* Color variables */
-  --primaryColor: #{$primaryColor};
-  --secondaryColor: #{$secondaryColor};
-  --backgroundColor: #{$backgroundColor};
-  --textColor: #{$textColor};
+  /* Surface Variants and Containers */
+  --sys-surface-variant: #e2e2e7;
+  --sys-on-surface-variant: #45474b;
+  --sys-surface-dim: #ddd9d9;
+  --sys-surface-bright: #fcf8f8;
+  --sys-surface-container-lowest: #ffffff;
+  --sys-surface-container-low: #f7f3f2;
+  --sys-surface-container: #f1eded;
+  --sys-surface-container-high: #ebe7e7;
+  --sys-surface-container-highest: #e5e2e1;
 
-  --successColor: #{$successColor};
-  --warnColor: #{$warnColor};
-  --errorColor: #{$errorColor};
-  --infoColor: #{$infoColor};
+  /* Inverse Surface */
+  --sys-inverse-surface: #313030;
+  --sys-inverse-on-surface: #f4f0ef;
 
-  --lightColor: #{$lightColor};
-  --darkColor: #{$darkColor};
-  --grayColor: #{$greyColor};
-  --lightgreyColor: #{$lightgreyColor};
+  /*=====================================
+    Utility Colours
+   ====================================*/
+  --sys-shadow: #000000; // Shadow for components
+  --sys-scrim: #000000; // Overlay scrim
+  --sys-outline: #76777b; // Default border outline
+  --sys-outline-variant: #c6c6cb;
+  --sys-surface-tint: #5e5e61;
 
-  --neutralBackground: #{$neutralBackground}; /* To use for cards or containers in dark mode */
-  --neutralBorderColor: #{$neutralBorderColor}; /* Subtle dividers or border color for dark mode */
-  --neutralDisabled: #{$neutralDisabled}; /* Use for disabled buttons or inputs */
+  /* Neutral Colours */
+  --sys-neutral: #797777;
+  --sys-neutral10: #1c1b1b;
+  --sys-neutral-variant: #76777b;
+  --sys-neutral-variant20: #2f3034;
 
+  /*=====================================
+    Error & Alerts
+   ====================================*/
+  --sys-error: #ba1a1a;
+  --sys-error-container: #ffdad6;
+  --sys-on-error: #ffffff;
+  --sys-on-error-container: #410002;
 
-  /* Button variables */
-  --btn-primary-bg: #{$btn-primary-bg};
-  --btn-primary-color: #{$btn-primary-color};
-  --btn-secondary-bg: #{$btn-secondary-bg};
-  --btn-secondary-color: #{$btn-secondary-color};
-
-  /* Button Hover/Active States */
-  --btn-primary-hover-bg: #{lighten($primaryColor, 10%)};
-  --btn-primary-active-bg: #{darken($primaryColor, 10%)};
-  --btn-secondary-hover-bg: #{lighten($secondaryColor, 10%)};
-  --btn-secondary-active-bg: #{darken($secondaryColor, 10%)};
-
-  /* Font size variables */
-  --font-size-base: #{$font-size-base};
-  --font-size-large: #{$font-size-large};
-  --font-size-small: #{$font-size-small};
-
-  /* Spacing variables */
-  --spacing-unit: #{$spacing-unit};
-  --spacing-unit-half: #{$spacing-unit-half};
-  --spacing-small: #{$spacing-small};
-  --spacing-large: #{$spacing-large};
-
-  /* Design Properties */
-  --border-radius: #{$border-radius};
-  --box-shadow: #{$box-shadow};
+  /*=====================================
+    Inverse Colours
+   ====================================*/
+  --sys-inverse-primary: #b0c8ed;
+  --sys-inverse-secondary: #bec7d7;
+  --sys-inverse-tertiary: #e3bae0;
 }
 
-// Variables from mdbootstrap mdb-ui-kit https://github.com/mdbootstrap/mdb-ui-kit/blob/master/src/scss/free/_variables.scss
+/* Dark Theme */
+.dark {
+  /*=======================================
+   == Primary Colors
+   =======================================*/
+  --sys-primary: #b0c8ed;
+  --sys-on-primary: #18314f;
+  --sys-primary-container: #304867;
+  --sys-on-primary-container: #d3e4ff;
 
-body.dark-mode {
-  /* Dark Mode Colours */
-  --primaryColor: #bec7d7;
-  --secondaryColor: #253D5B; //todo: adjust as needed for accents
-  --backgroundColor: #1a1717; // todo: Adjust background shades for dark mode.
-  --textColor: #efefef; // light text color for dark mode
+  /* Fixed Primary Variants */
+  --sys-primary-fixed: #d3e4ff;
+  --sys-primary-fixed-dim: #b0c8ed;
+  --sys-on-primary-fixed: #001c38;
+  --sys-on-primary-fixed-variant: #304867;
 
-  /* Dark Mode Buttons */
-  --btn-primary-bg: #bec7d7; // todo: Adjust and define this.
-  --btn-primary-color: #333;
-  --btn-primary-hover-bg: lighten(#bec7d7, 10%); //todo adjust as needed
-  --btn-primary-active-bg: darken(#bec7d7, 10%);
-  --btn-secondary-bg: #253D5B;
-  --btn-secondary-hover-bg: lighten(#253D5B, 10%);
-  --btn-secondary-active-bg: darken(#253D5B, 10%);
+  /*=======================================
+ == Secondary Colors
+ =======================================*/
+  --sys-secondary: #bec7d7;
+  --sys-on-secondary: #28313d;
+  --sys-secondary-container: #3e4754;
+  --sys-on-secondary-container: #dae3f3;
+
+  /* Fixed Secondary Variants */
+  --sys-secondary-fixed: #dae3f3;
+  --sys-secondary-fixed-dim: #bec7d7;
+  --sys-on-secondary-fixed: #131c28;
+  --sys-on-secondary-fixed-variant: #3e4754;
+
+  /*=======================================
+  == Tertiary Colors
+  =======================================*/
+  --sys-tertiary: #e3bae0;
+  --sys-on-tertiary: #432644;
+  --sys-tertiary-container: #5b3c5b;
+  --sys-on-tertiary-container: #ffd6fb;
+
+  /* Fixed Tertiary Variants */
+  --sys-tertiary-fixed: #ffd6fb;
+  --sys-tertiary-fixed-dim: #e3bae0;
+  --sys-on-tertiary-fixed: #2c112e;
+  --sys-on-tertiary-fixed-variant: #5b3c5b;
+
+  /*=======================================
+    == Background and Surface Colors
+    =======================================*/
+  --sys-background: #141313;
+  --sys-on-background: #e5e2e1;
+
+  /* Surface Colors */
+  --sys-surface: #141313;
+  --sys-on-surface: #e5e2e1;
+
+  /* Surface Variants & Containers */
+  --sys-surface-variant: #45474b;
+  --sys-on-surface-variant: #c6c6cb;
+  --sys-surface-dim: #141313;
+  --sys-surface-bright: #3a3939;
+  --sys-surface-container-lowest: #0e0e0e;
+  --sys-surface-container-low: #1c1b1b;
+  --sys-surface-container: #201f20;
+  --sys-surface-container-high: #2a2a2a;
+  --sys-surface-container-highest: #353435;
+
+  /* Inverse Surface */
+  --sys-inverse-surface: #e5e2e1;
+  --sys-inverse-on-surface: #313030;
+
+  /*=======================================
+  == Utility Colors
+  =======================================*/
+  --sys-shadow: #000000; // Shadow for components
+  --sys-scrim: #000000; // Overlay scrim
+  --sys-outline: #909094; // Default border outline
+  --sys-outline-variant: #45474b;
+  --sys-surface-tint: #c7c6c9;
+
+  /* Neutral Colours */
+  --sys-neutral: #797777;
+  --sys-neutral10: #1c1b1b;
+  --sys-neutral-variant: #76777b;
+  --sys-neutral-variant20: #2f3034;
+
+  /*=======================================
+  == Error and Alerts
+  =======================================*/
+  --sys-error: #ffb4ab;
+  --sys-error-container: #93000a;
+  --sys-on-error: #690005;
+  --sys-on-error-container: #ffdad6;
+
+  /*=======================================
+  == Inverse Colors
+  =======================================*/
+  --sys-inverse-primary: #486080;
+  --sys-inverse-secondary: #565f6d;
+  --sys-inverse-tertiary: #755374;
 }
+

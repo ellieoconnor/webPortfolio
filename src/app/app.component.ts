@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationLinksComponent } from './components/navigation/navigation-links.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -10,7 +10,8 @@ import { FeaturedItemsComponent } from './components/featured-items/featured-ite
   standalone: true,
   imports: [CommonModule, NavigationLinksComponent, MatToolbarModule, AboutHeaderComponent, FeaturedItemsComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
   title = 'webPortfolio';
