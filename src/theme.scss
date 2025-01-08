@@ -115,18 +115,18 @@ $error-red-palette: (
 /***************************
 Custom Themes
 ***************************/
-$defaultTheme-primary: mat.define-palette($prussian-blue-palette, 800, 400, 900);
-$defaultTheme-accent: mat.define-palette($light-blue-palette, 200, 50, 400);
+$defaultTheme-primary: mat.m2-define-palette($prussian-blue-palette, 800, 400, 900);
+$defaultTheme-accent: mat.m2-define-palette($light-blue-palette, 200, 50, 400);
 // The warn palette is optional (defaults to red).
-$defaultTheme-warn: mat.define-palette($error-red-palette, 500);
+$defaultTheme-warn: mat.m2-define-palette($error-red-palette, 500);
 
 // Define typography configurations if needed
-$defaultTheme-typography: mat.define-typography-config(
+$defaultTheme-typography: mat.m2-define-typography-config(
 	$font-family: 'Inter, "Helvetica Neue", sans-serif'
 );
 
 // Create the theme object, including color and typography configurations
-$defaultTheme-theme: mat.define-light-theme(
+$defaultTheme-theme: mat.m2-define-light-theme(
 	(
 		color: (
 			primary: $defaultTheme-primary,
