@@ -4,14 +4,20 @@ This file should contain all global variables, including colour schemes, spacing
 It can also have mixins and functions that are to be reused throughout the project.
  */
 
+@use 'sass:math';
+// todo: define a link color?
+
 /***************************
 Colour Variables
 ***************************/
 // Primary Colours
 $primaryColor: #253D5B; // prussian blue
 //$primaryColor: #3b71ca;
-$secondaryColor: #9FC2CC; // light blue
+$secondaryColor: #bec7d7; // light blue
 //$secondaryColor: #9fa6b2;
+$backgroundColor: #fbfbfb; // Light mode background (light gray/white)
+$textColor: #000; // Light mode text (black/dark gray)
+
 $successColor: #14a44d;
 $errorColor: #dc4c64;
 $warnColor: #ff9800;
@@ -23,11 +29,15 @@ $darkColor: #332d2d;
 $greyColor: #67697C; // dim gray
 $lightgreyColor: #e5e7fd;
 
+$neutralBackground: #77777a; /* To use for cards or containers in dark mode */
+$neutralBorderColor: #74777e; /* Subtle dividers or border color for dark mode */
+$neutralDisabled: #74777e; /* Use for disabled buttons or inputs */
+
 // Button Colours
-$btn-primary-bg: $primaryColor;
-$btn-primary-color: #fff;
+$btn-primary-bg: $primaryColor; // Button background color
+$btn-primary-color: #fff; // button text color
 $btn-secondary-bg: $secondaryColor;
-$btn-secondary-color: #fff;
+$btn-secondary-color: #333;
 
 // Button Hover/Active States
 $btn-primary-hover-bg: lighten($primaryColor, 10%);
@@ -45,7 +55,7 @@ $font-size-small: 12px;
 
 // Spacing Units
 $spacing-unit: 8px; // base spacing unit
-$spacing-unit-half: $spacing-unit / 2;
+$spacing-unit-half: math.div($spacing-unit, 2);
 $spacing-small: 4px;
 $spacing-large: 16px;
 
@@ -62,6 +72,9 @@ CSS Custom Properties
   /* Color variables */
   --primaryColor: #{$primaryColor};
   --secondaryColor: #{$secondaryColor};
+  --backgroundColor: #{$backgroundColor};
+  --textColor: #{$textColor};
+
   --successColor: #{$successColor};
   --warnColor: #{$warnColor};
   --errorColor: #{$errorColor};
@@ -71,6 +84,11 @@ CSS Custom Properties
   --darkColor: #{$darkColor};
   --grayColor: #{$greyColor};
   --lightgreyColor: #{$lightgreyColor};
+
+  --neutralBackground: #{$neutralBackground}; /* To use for cards or containers in dark mode */
+  --neutralBorderColor: #{$neutralBorderColor}; /* Subtle dividers or border color for dark mode */
+  --neutralDisabled: #{$neutralDisabled}; /* Use for disabled buttons or inputs */
+
 
   /* Button variables */
   --btn-primary-bg: #{$btn-primary-bg};
@@ -102,3 +120,19 @@ CSS Custom Properties
 
 // Variables from mdbootstrap mdb-ui-kit https://github.com/mdbootstrap/mdb-ui-kit/blob/master/src/scss/free/_variables.scss
 
+body.dark-mode {
+  /* Dark Mode Colours */
+  --primaryColor: #bec7d7;
+  --secondaryColor: #253D5B; //todo: adjust as needed for accents
+  --backgroundColor: #1a1717; // todo: Adjust background shades for dark mode.
+  --textColor: #efefef; // light text color for dark mode
+
+  /* Dark Mode Buttons */
+  --btn-primary-bg: #bec7d7; // todo: Adjust and define this.
+  --btn-primary-color: #333;
+  --btn-primary-hover-bg: lighten(#bec7d7, 10%); //todo adjust as needed
+  --btn-primary-active-bg: darken(#bec7d7, 10%);
+  --btn-secondary-bg: #253D5B;
+  --btn-secondary-hover-bg: lighten(#253D5B, 10%);
+  --btn-secondary-active-bg: darken(#253D5B, 10%);
+}

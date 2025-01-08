@@ -18,5 +18,13 @@ export class ThemeLogicService {
 		this.updateTheme();
 	}
 
-	updateTheme() {}
+	updateTheme() {
+    const htmlElement = document.documentElement;
+
+    if(this.darkModeEnabled) {
+      htmlElement.classList.add('dark-mode');
+    } else {
+      htmlElement.classList.remove('dark-mode');
+    }
+  }
 }

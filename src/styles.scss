@@ -8,11 +8,6 @@
 @import 'src/assets/sass/vars.scss';
 @import 'theme';
 
-/* Tailwind CSS */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Base styles */
 html,
 body {
@@ -24,6 +19,8 @@ body {
   min-width: 600px; // somewhat arbitrary min width, for forms to look "OK" and to know their min boundary.
   overflow: hidden;
   font-size: 16px;
+  color: var(--textColor);
+  background-color: var(--backgroundColor);
 }
 
 .container {
@@ -37,11 +34,39 @@ body.dark-mode {
   color: var(--textColorDark);
 }
 
+button {
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-color);
+  border: none;
+  padding: var(--spacing-unit);
+  border-radius: var(--border-radius);
+
+  &:hover {
+    background-color: var(--btn-primary-bg-hover);
+  }
+
+  &:active {
+    background-color: var(--btn-primary-bg-active);
+  }
+}
+
+body.dark-mode button {
+  background-color: var(--btn-primary-bg-dark);
+  color: var(--btn-primary-color-dark);
+
+  &:hover {
+    background-color: var(--btn-primary-bg-hover-dark);
+  }
+
+  &:active {
+    background-color: var(--btn-primary-bg-active-dark);
+  }
+}
+
 
 /**
 TODO List
 todo: Standard theme colors
-todo: Dark mode colors
 todo: Add button style and behaviour (hover, pointer, color, etc)
 todo: Add loading icon (spinner or something free) and modal overlay when loading
 todo: Add error messaging for the site
