@@ -19,12 +19,12 @@ export class ThemeLogicService {
 	}
 
 	updateTheme() {
-    const htmlElement = document.documentElement;
+		const htmlElement = document.documentElement;
 
-    if(this.darkModeEnabled) {
-      htmlElement.classList.add('dark');
-    } else {
-      htmlElement.classList.remove('dark');
-    }
-  }
+		if (this.darkModeEnabled) {
+			htmlElement.classList.add('dark');
+		} else {
+			htmlElement.classList.remove('dark');
+		}
+	}
 }

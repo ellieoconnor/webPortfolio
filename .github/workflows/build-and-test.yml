@@ -44,4 +44,3 @@ jobs:
     steps:
       - name: Check if PR can be merged
         run: echo "Ensure all checks have passed before merging to main."
-

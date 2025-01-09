@@ -3,9 +3,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgModule } from '@angular/core';
 
 @NgModule({
-  imports: [MatButtonModule, MatToolbarModule],
+	imports: [MatButtonModule, MatToolbarModule]
 })
-
-export class MaterialModule {
-
-}
+export class MaterialModule {}

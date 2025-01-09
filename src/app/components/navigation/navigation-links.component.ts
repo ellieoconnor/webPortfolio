@@ -25,10 +25,9 @@ export class NavigationLinksComponent {
 		lightModeSun: faSun
 	};
 
-  constructor(private themeService: ThemeLogicService) {
-  }
+	constructor(private themeService: ThemeLogicService) {}
 
-  toggleDarkMode() {
-    this.themeService.toggleTheme();
-  }
+	toggleDarkMode() {
+		this.themeService.toggleTheme();
+	}
 }
