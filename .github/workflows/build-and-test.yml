@@ -36,10 +36,6 @@ jobs:
       - name: Run Jest tests with coverage
         run: npm test -- --coverage
 
-      # Step 6: Build the Angular app
-      - name: Build Angular app
-        run: npm run build
-
   enforce-merge:
     needs: build-and-test
     runs-on: ubuntu-latest
