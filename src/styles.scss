@@ -1,57 +1,61 @@
 /**
 * Global Styles
 * This file should be the global stylesheet that ties everything together.
-* It can import both vars.scss and theme.scss and include additional global styles, base styles, and utility classes.
  */
 
 /* Global Imports */
-@import 'src/assets/sass/vars.scss';
-@import 'theme';
+//@import 'src/assets/sass/vars.scss';
+@use '@angular/material' as mat;
+@use 'm3-theme' as m3;
+@include mat.core();
 
-/* Tailwind CSS */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+	@include mat.all-component-themes(m3.$light-theme);
+	@include mat.system-level-colors(m3.$light-theme);
+	@include mat.system-level-typography(m3.$light-theme);
+	background-color: var(--sys-background);
+	color: var(--sys-on-background);
+}
+
+.dark {
+	@include mat.all-component-themes(m3.$dark-theme);
+	@include mat.all-component-colors(m3.$dark-theme);
+	@include mat.all-component-typographies(m3.$dark-theme);
+}
 
 /* Base styles */
 html,
 body {
-  margin: 0;
-  border: none;
-  outline: none;
-  height: 100vh;
-  width: 100vw;
-  min-width: 600px; // somewhat arbitrary min width, for forms to look "OK" and to know their min boundary.
-  overflow: hidden;
-  font-size: 16px;
+	margin: 0;
+	border: none;
+	outline: none;
+	height: 100vh;
+	width: 100vw;
+	min-width: 600px; // somewhat arbitrary min width, for forms to look "OK" and to know their min boundary.
+	overflow: hidden;
+	font-size: 16px;
+	font-family: 'Inter', 'Helvetica Neue', sans-serif;
 }
 
 .container {
-  width: 90%;
-  max-width: 1000px;
-  margin: 0 auto;
+	width: 90%;
+	max-width: 1000px;
+	margin: 0 auto;
 }
-
-body.dark-mode {
-  background-color: var(--backgroundColorDark);
-  color: var(--textColorDark);
-}
-
 
 /**
-TODO List
-todo: Standard theme colors
-todo: Dark mode colors
-todo: Add button style and behaviour (hover, pointer, color, etc)
-todo: Add loading icon (spinner or something free) and modal overlay when loading
-todo: Add error messaging for the site
-todo:
- */
-
-/*****************
-	Standard Colors
-*****************/
-
-/*****************
-	Font Icon Buttons
-*****************/
+//TODO List
+//todo: Standard theme colors
+//todo: Add button style and behaviour (hover, pointer, color, etc)
+//todo: Add loading icon (spinner or something free) and modal overlay when loading
+//todo: Add error messaging for the site
+//todo:
+// */
+//
+///*****************
+//	Standard Colors
+//*****************/
+//
+///*****************
+//	Font Icon Buttons
+//*****************/

@@ -7,6 +7,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { MatButtonModule } from '@angular/material/button';
+import { ThemeLogicService } from '../theme-logic.service';
 
 @Component({
 	selector: 'app-navigation-links',
@@ -24,10 +25,9 @@ export class NavigationLinksComponent {
 		lightModeSun: faSun
 	};
 
+	constructor(private themeService: ThemeLogicService) {}
+
 	toggleDarkMode() {
-		this.isDarkMode = !this.isDarkMode;
-		// EO Note: make the theme dark mode or light. Should maybe use in a theme service
-		// if (this.isDarkMode) {
-		// }
+		this.themeService.toggleTheme();
 	}
 }
