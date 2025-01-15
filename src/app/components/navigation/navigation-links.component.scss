@@ -1,12 +1,18 @@
 .navigation-item-container {
 	display: flex;
 	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 	margin-bottom: 1rem;
 }
 
 button {
-	background-color: var(--sys-neutral);
-	width: 150px;
-	height: 30px;
-	border-radius: var(--border-radius);
+	width: 2rem;
+	height: 2rem;
+}
+
+.nav-links {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
 }

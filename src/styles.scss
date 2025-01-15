@@ -43,6 +43,20 @@ body {
 	margin: 0 auto;
 }
 
+/* Base button styles */
+button {
+	background-color: var(--sys-primary-container); /* Use a variable from vars.scss */
+	color: var(--sys-on-primary-container); /* Use text color based on the primary background */
+	border-radius: var(--border-radius); /* Consistent border radius from vars.scss */
+	border: none; /* Consider removing borders if not required */
+	cursor: pointer;
+
+	/* State styles */
+	&:hover {
+		background-color: var(--sys-primary-container); /* Subtle hover effect */
+	}
+}
+
 /**
 //TODO List
 //todo: Standard theme colors
