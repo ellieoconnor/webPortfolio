@@ -1,10 +1,10 @@
 <mat-nav-list class="navigation-item-container">
-  <div class="nav-links">
-	<a mat-list-item href="#">Home</a>
-	<a mat-list-item href="#">Blog</a>
-	<a mat-list-item href="#">Git</a>
-	<a mat-list-item href="#">Contact Me</a>
-  </div>
+	<div class="nav-links">
+		<a class="link-item" href="#">Home</a>
+		<a class="link-item" href="#">Blog</a>
+		<a class="link-item" href="#">GitHub</a>
+		<a class="link-item" href="#">Contact Me</a>
+	</div>
 	<!-- Dark and Light Mode Toggle Button -->
 	<button (click)="toggleDarkMode()">
 		<ng-container *ngIf="isDarkMode; else lightModeTemplate">

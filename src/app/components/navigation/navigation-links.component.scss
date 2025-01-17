@@ -4,15 +4,40 @@
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 1rem;
+	font-size: 1.15rem;
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
 }
 
 button {
 	width: 2rem;
 	height: 2rem;
+	justify-content: center;
 }
 
 .nav-links {
 	display: flex;
 	flex-direction: row;
+	gap: 20px;
 	justify-content: flex-start;
+	margin-right: 0.8rem;
+}
+
+.link-item {
+	height: auto;
+	text-align: center;
+	padding: 10px;
+	width: fit-content;
+	min-width: 3rem;
+	border-radius: var(--border-radius);
+	transition:
+		color 0.25s ease,
+		background-color 0.25s ease;
+
+	&:hover {
+		background-color: var(--sys-inverse-secondary);
+		cursor: pointer;
+	}
 }

@@ -53,7 +53,8 @@ button {
 
 	/* State styles */
 	&:hover {
-		background-color: var(--sys-primary-container); /* Subtle hover effect */
+		background-color: var(--sys-inverse-secondary); /* Subtle hover effect */
+		cursor: pointer;
 	}
 }
 
