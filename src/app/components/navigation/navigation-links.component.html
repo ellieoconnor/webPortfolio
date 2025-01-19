@@ -1,6 +1,11 @@
 <mat-nav-list class="navigation-item-container">
 	<div class="nav-links">
-		<a class="link-item" *ngFor="let link of links; first as isFirst" [class.first-link]="isFirst" [href]="link.href">
+		<a
+			class="link-item"
+			*ngFor="let link of links; first as isFirst"
+			[class.first-link]="isFirst"
+			[href]="link.href"
+			[target]="link?.target">
 			{{ link.label }}
 		</a>
 	</div>
@@ -8,10 +13,10 @@
 	<div class="toggle-container">
 		<button (click)="toggleDarkMode()">
 			<ng-container *ngIf="isDarkMode; else lightModeTemplate">
-				<fa-icon [icon]="icons.darkModeMoon"></fa-icon>
+				<fa-icon [icon]="icons.lightModeSun"></fa-icon>
 			</ng-container>
 			<ng-template #lightModeTemplate>
-				<fa-icon [icon]="icons.lightModeSun"></fa-icon>
+				<fa-icon [icon]="icons.darkModeMoon"></fa-icon>
 			</ng-template>
 		</button>
 	</div>

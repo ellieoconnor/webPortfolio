@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -9,6 +9,12 @@ import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { MatButtonModule } from '@angular/material/button';
 import { ThemeLogicService } from '../theme-logic.service';
 
+interface Link {
+	label: string;
+	href: string;
+	target?: string;
+}
+
 @Component({
 	selector: 'app-navigation-links',
 	standalone: true,
@@ -16,7 +22,7 @@ import { ThemeLogicService } from '../theme-logic.service';
 	templateUrl: './navigation-links.component.html',
 	styleUrls: ['./navigation-links.component.scss']
 })
-export class NavigationLinksComponent {
+export class NavigationLinksComponent implements OnInit {
 	isDarkMode: boolean = false;
 
 	/* List of Icons */
@@ -25,17 +31,23 @@ export class NavigationLinksComponent {
 		lightModeSun: faSun
 	};
 
-	links = [
+	links: Link[] = [
 		{ label: 'Home', href: '#' },
 		{ label: 'About', href: '#' },
 		{ label: 'Blog', href: '#' },
-		{ label: 'GitHub', href: '#' },
+		{ label: 'GitHub', href: 'https://github.com/ellieoconnor', target: '_blank' },
 		{ label: 'Contact Me', href: '#' }
 	];
 
 	constructor(private themeService: ThemeLogicService) {}
 
+	ngOnInit(): void {
+		this.isDarkMode = this.themeService.darkModeEnabled;
+	}
+
 	toggleDarkMode() {
 		this.themeService.toggleTheme();
+
+		this.isDarkMode = this.themeService.darkModeEnabled;
 	}
 }
