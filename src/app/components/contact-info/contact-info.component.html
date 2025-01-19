@@ -1,0 +1,9 @@
+<h1>Contact</h1>
+<mat-divider></mat-divider>
+<p>If you'd like to get in touch, you can reach me using the following methods.</p>
+<div class="contact-items">
+	<div *ngFor="let item of contactItems">
+		<h2>{{ item.label }}</h2>
+		<span>{{ item.value }}</span>
+	</div>
+</div>

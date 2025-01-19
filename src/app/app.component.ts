@@ -4,11 +4,12 @@ import { NavigationLinksComponent } from './components/navigation/navigation-lin
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AboutHeaderComponent } from './components/about-header/about-header.component';
 import { FeaturedItemsComponent } from './components/featured-items/featured-items.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
 	selector: 'app-root',
 	standalone: true,
-	imports: [CommonModule, NavigationLinksComponent, MatToolbarModule, AboutHeaderComponent, FeaturedItemsComponent],
+	imports: [CommonModule, NavigationLinksComponent, MatToolbarModule, AboutHeaderComponent, FeaturedItemsComponent, RouterOutlet],
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss']
 })

@@ -4,8 +4,8 @@
 			class="link-item"
 			*ngFor="let link of links; first as isFirst"
 			[class.first-link]="isFirst"
-			[href]="link.href"
-			[target]="link?.target">
+			[target]="link?.target"
+			[routerLink]="link.href">
 			{{ link.label }}
 		</a>
 	</div>

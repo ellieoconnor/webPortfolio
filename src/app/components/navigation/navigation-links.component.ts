@@ -8,6 +8,7 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { MatButtonModule } from '@angular/material/button';
 import { ThemeLogicService } from '../theme-logic.service';
+import { RouterLink, RouterModule } from '@angular/router';
 
 interface Link {
 	label: string;
@@ -18,7 +19,17 @@ interface Link {
 @Component({
 	selector: 'app-navigation-links',
 	standalone: true,
-	imports: [CommonModule, MatToolbarModule, MatSidenavModule, MatListModule, MatButtonToggleModule, FaIconComponent, MatButtonModule],
+	imports: [
+		CommonModule,
+		MatToolbarModule,
+		MatSidenavModule,
+		MatListModule,
+		MatButtonToggleModule,
+		FaIconComponent,
+		MatButtonModule,
+		RouterLink,
+		RouterModule
+	],
 	templateUrl: './navigation-links.component.html',
 	styleUrls: ['./navigation-links.component.scss']
 })
@@ -32,11 +43,9 @@ export class NavigationLinksComponent implements OnInit {
 	};
 
 	links: Link[] = [
-		{ label: 'Home', href: '#' },
-		{ label: 'About', href: '#' },
-		{ label: 'Blog', href: '#' },
-		{ label: 'GitHub', href: 'https://github.com/ellieoconnor', target: '_blank' },
-		{ label: 'Contact Me', href: '#' }
+		{ label: 'Home', href: '/home' },
+		{ label: 'Blog', href: '/blog' },
+		{ label: 'Contact', href: '/contact' }
 	];
 
 	constructor(private themeService: ThemeLogicService) {}
