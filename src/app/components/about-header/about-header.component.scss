@@ -2,11 +2,13 @@ section {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	margin-bottom: 3rem;
 }
 
 .profile-pic {
 	width: 200px;
-	height: auto;
+	height: 250px;
+	border-radius: 50%;
 	margin-left: 3rem;
 	object-fit: cover; /* Ensures the image covers the container uniformly. */
 }

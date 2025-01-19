@@ -13,6 +13,12 @@ It can also have mixins and functions that are to be reused throughout the proje
 /* Light Theme */
 :root, :host {
   /*===================================
+   Style Variables
+   ==================================*/
+  --border-radius: 5px;
+  --border-radius-cards: 7px;
+
+  /*===================================
    Primary Colours
    ==================================*/
   --sys-primary: #486080;
