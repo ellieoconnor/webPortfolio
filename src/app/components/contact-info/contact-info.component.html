@@ -4,6 +4,8 @@
 <div class="contact-items">
 	<div *ngFor="let item of contactItems">
 		<h2>{{ item.label }}</h2>
-		<span>{{ item.value }}</span>
+		<!-- Conditionally wrap up value in an anchor tag if 'href' exists -->
+		<!--		<span *ngIf="!item.href">{{ item.value }}</span>-->
+		<a *ngIf="item.label === 'Email'" [href]="'mailto:' + emailUser + '@' + emailDomain + '?Subject=Hello!'">{{ item.value }}</a>
 	</div>
 </div>
