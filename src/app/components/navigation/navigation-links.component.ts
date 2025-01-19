@@ -25,6 +25,14 @@ export class NavigationLinksComponent {
 		lightModeSun: faSun
 	};
 
+	links = [
+		{ label: 'Home', href: '#' },
+		{ label: 'About', href: '#' },
+		{ label: 'Blog', href: '#' },
+		{ label: 'GitHub', href: '#' },
+		{ label: 'Contact Me', href: '#' }
+	];
+
 	constructor(private themeService: ThemeLogicService) {}
 
 	toggleDarkMode() {

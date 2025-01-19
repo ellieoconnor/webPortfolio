@@ -1,36 +1,41 @@
 .navigation-item-container {
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-start;
+	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 1rem;
+	padding-right: 1rem;
+	margin-bottom: 2rem;
 	font-size: 1.15rem;
-	gap: 26rem;
-	a {
-		text-decoration: none;
-		color: inherit;
+
+	// todo: responsiveness will need to tweak it.
+	@media (max-width: 769px) {
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+		padding: 0;
 	}
 }
 
-button {
-	width: 2rem;
-	height: 2rem;
-	justify-content: center;
-	margin-left: 10px;
+.toggle-container {
+	display: flex;
+	justify-content: flex-end;
+
+	button {
+		width: 2rem;
+		height: 2rem;
+		justify-content: center;
+	}
 }
 
 .nav-links {
 	display: flex;
 	flex-direction: row;
-	gap: 15px;
+	gap: 1.5rem;
 	justify-content: flex-start;
 }
 
 .link-item {
-	height: auto;
-	text-align: center;
 	padding: 10px;
-	width: fit-content;
 	min-width: 3rem;
 	border-radius: var(--border-radius);
 	transition:
@@ -41,4 +46,9 @@ button {
 		background-color: var(--sys-inverse-secondary);
 		cursor: pointer;
 	}
+}
+
+.first-link {
+	margin-left: 0;
+	padding-left: 0;
 }
