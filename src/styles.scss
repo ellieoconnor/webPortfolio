@@ -18,7 +18,6 @@
 }
 
 .dark {
-	@include mat.all-component-themes(m3.$dark-theme);
 	@include mat.all-component-colors(m3.$dark-theme);
 	@include mat.all-component-typographies(m3.$dark-theme);
 }

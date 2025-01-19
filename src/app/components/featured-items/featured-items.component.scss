@@ -2,14 +2,29 @@
 	min-height: 250px;
 	display: flex;
 	flex-direction: row;
+	gap: 1rem;
+}
+.border {
+	position: relative;
+	border-radius: var(--border-radius-cards);
+	padding: 4px;
+	box-sizing: border-box;
+	overflow: hidden;
+	display: flex;
+	background: linear-gradient(to right, #b0c8ed, #e3bae0); /* Gradient background for the border */
+	width: 33%;
 }
 
-mat-card {
-	margin-right: 1rem;
-	margin-bottom: 1.5rem;
-	min-height: 100%;
-	max-width: 30%;
-	border: solid var(--primaryColor) 2px;
+.border mat-card {
+	border-radius: inherit; /* Match the parent's border-radius for consistency */
+	background-color: var(--sys-background); /* Ensure the card content is visible */
+	overflow: hidden; /* Clip overflowing content within the border radius */
+	box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+	flex-direction: column; /* Ensure content inside mat-card stacks properly */
+}
+
+mat-card-header {
+	flex-shrink: 0;
 }
 
 mat-card-footer {
