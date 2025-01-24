@@ -2,14 +2,14 @@ section {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	margin-bottom: 3rem;
 }
 
 .profile-pic {
-	width: 200px;
-	height: 250px;
+	flex-shrink: 0;
+	width: 11rem;
+	height: 12rem;
 	border-radius: 50%;
-	margin-left: 3rem;
+	margin-left: 1rem;
 	object-fit: cover; /* Ensures the image covers the container uniformly. */
 }
 
@@ -20,6 +20,7 @@ section {
 	max-width: 600px;
 	margin-bottom: 1rem;
 	margin-right: 3rem;
+	flex: 1;
 }
 
 .text-container h1 {
