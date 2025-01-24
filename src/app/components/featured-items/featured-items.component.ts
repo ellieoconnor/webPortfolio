@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { BlogPost } from './blog-post.model';
+import { FakeBlogPost } from './fake-blog-post.model';
 
 @Component({
 	selector: 'app-featured-items',
@@ -26,7 +26,7 @@ export class FeaturedItemsComponent {
 	};
 
 	/* Blog Posts */
-	blogPosts: BlogPost[] = [
+	fakeBlogPosts: FakeBlogPost[] = [
 		{
 			title: 'Blog Post Number One',
 			datePublished: this.currentDate,

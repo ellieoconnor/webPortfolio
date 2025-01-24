@@ -7,7 +7,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { MatButtonModule } from '@angular/material/button';
-import { ThemeLogicService } from '../theme-logic.service';
+import { ThemeLogicService } from '../../services/theme-logic.service';
 import { RouterLink, RouterModule } from '@angular/router';
 
 interface Link {
