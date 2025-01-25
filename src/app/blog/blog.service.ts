@@ -90,5 +90,13 @@ export class BlogService {
 		);
 	}
 
-	private getBlogPostFiles() {}
+	private getBlogPostFiles(): Observable<string[]> {
+		// NOTE: Replace this with code to dynamically fetch file names if backend/dynamic options are available.
+		// For now, we will simulate file list for development.
+		return new Observable<string[]>((observer) => {
+			// Simulated markdown file names
+			observer.next(['post1.md', 'post2.md', 'post3.md']);
+			observer.complete();
+		});
+	}
 }
