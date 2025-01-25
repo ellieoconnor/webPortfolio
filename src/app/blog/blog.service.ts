@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { BlogPost } from './blog.model';
+import { catchError, forkJoin, map, Observable, of } from 'rxjs';
+import { BlogPost, BlogPostMetadata } from './blog.model';
 import { marked } from 'marked/lib/marked';
+import matter from 'gray-matter';
 
 @Injectable({
 	providedIn: 'root'
@@ -31,8 +32,19 @@ export class BlogService {
 
 	constructor(private http: HttpClient) {}
 
-	/** Fetching blog posts */
-	getAllPosts() {}
+	/** Fetching metadata for all blog posts by reading markdown files. */
+	getAllPosts(): Observable<BlogPostMetadata[]> {
+		// Retrieve the list of markdown files from the directory
+		return this.getBlogPostFiles().pipe(
+			map((fileNames: string[]) => fileNames.map((fileName) => fileName.replace('.md', ''))), //create slugs
+			map((slugs: string[]) => {
+				const metadataRequests = slugs.map((slug) => this.getBlogPostMetadata(slug));
+				return forkJoin(metadataRequests); // Combine all metadata requests into a single observable
+			}),
+			map((requests: Observable<BlogPostMetadata[]>) => requests),
+			catchError(() => [] as BlogPostMetadata[]) // if there's an error (e.g., no files), return an empty array.
+		);
+	}
 
 	/**
 	 * Fetches a specific markdown file by slug.
@@ -42,15 +54,41 @@ export class BlogService {
 	 */
 	getBlogPost(slug: string): Observable<BlogPost> {
 		const filePath = `${this.postsPath}${slug}.md`;
-		return this.http.get<BlogPost>(filePath);
+		return this.http.get(filePath, { responseType: 'text' }).pipe(
+			map((fileContent: string) => {
+				const { data, content } = matter(fileContent); // Extract YAML frontmatter and Markdown content
+				return {
+					metadata: { ...data, slug } as BlogPostMetadata, // Add slug to metadata
+					content: marked.parse(content) // Convert markdown to HTML using marked
+				} as BlogPost;
+			}),
+			catchError(
+				() =>
+					// Return an empty placeholder object in case of errors
+					({ metadata: {} as BlogPostMetadata, content: '' }) as BlogPost
+			)
+		);
 	}
 
 	/**
-	 * Parses raw Markdown content into HTML
-	 *
-	 * @param markdownContent - The raw Markdown string to be parsed.
+	 * Fetches the metadata (YAML frontmatter) of a specific blog post
+	 * @param slug
+	 * @return Observable<BlogPostMetadata>
 	 */
-	parseContentHTML(markdownContent: string): string | Promise<string> {
-		return marked(markdownContent);
+	private getBlogPostMetadata(slug: string): Observable<BlogPostMetadata> {
+		const filePath = `${this.postsPath}${slug}.md`;
+		return this.http.get(filePath, { responseType: 'text' }).pipe(
+			map((fileContent: string) => {
+				const { data } = matter(fileContent); // Extract YAML frontmatter
+				return { ...data, slug } as BlogPostMetadata; // Add slug to metadata
+			}),
+			catchError(
+				() =>
+					// Return empty metadata if an error occurs
+					({ title: '', date: '', description: '', status: 'draft', slug }) as BlogPostMetadata
+			)
+		);
 	}
+
+	private getBlogPostFiles() {}
 }
