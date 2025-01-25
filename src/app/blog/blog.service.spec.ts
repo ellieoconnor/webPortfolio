@@ -38,7 +38,7 @@ describe('BlogService', () => {
 		};
 
 		// ACT: Call the service
-		service.getBlogPost(mockSlug).subscribe((response) => {
+		service.fetchBlogPost(mockSlug).subscribe((response) => {
 			// ASSERT: Test the result
 			expect(response).toBeTruthy();
 			expect(response.metadata.title).toBe('My Blog Post');

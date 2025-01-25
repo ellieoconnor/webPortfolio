@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, forkJoin, map, Observable, of } from 'rxjs';
+import { catchError, forkJoin, map, Observable, of, switchMap } from 'rxjs';
 import { BlogPost, BlogPostMetadata } from './blog.model';
-import { marked } from 'marked/lib/marked';
 import matter from 'gray-matter';
+import { marked } from 'marked';
 
 @Injectable({
 	providedIn: 'root'
@@ -14,17 +14,19 @@ export class BlogService {
 
 	constructor(private http: HttpClient) {}
 
-	/** Fetching metadata for all blog posts by reading markdown files. */
-	getAllPosts(): Observable<BlogPostMetadata[]> {
-		// Retrieve the list of markdown files from the directory
-		return this.getBlogPostFiles().pipe(
-			map((fileNames: string[]) => fileNames.map((fileName) => fileName.replace('.md', ''))), //create slugs
-			map((slugs: string[]) => {
-				const metadataRequests = slugs.map((slug) => this.getBlogPostMetadata(slug));
-				return forkJoin(metadataRequests); // Combine all metadata requests into a single observable
+	/**
+	 * Retrieves all blog post metadata by processing blog post files.
+	 *
+	 * @return {Observable<BlogPostMetadata[]>} An observable emitting an array of blog post metadata.
+	 */
+	fetchAllPostsMetadata(): Observable<BlogPostMetadata[]> {
+		return this.fetchBlogPostFiles().pipe(
+			map((fileNames: string[]) => fileNames.map((fileName) => fileName.replace('.md', ''))),
+			switchMap((slugs: string[]) => {
+				const metadataRequests = slugs.map((slug) => this.fetchMetadataBySlug(slug));
+				return forkJoin(metadataRequests);
 			}),
-			map((requests: Observable<BlogPostMetadata[]>) => requests),
-			catchError(() => [] as BlogPostMetadata[]) // if there's an error (e.g., no files), return an empty array.
+			catchError(() => of([]))
 		);
 	}
 
@@ -34,21 +36,11 @@ export class BlogService {
 	 * @param slug - The slug (file name without extension)
 	 * @return An observable containing the file content as a string.
 	 */
-	getBlogPost(slug: string): Observable<BlogPost> {
+	fetchBlogPost(slug: string): Observable<BlogPost> {
 		const filePath = `${this.postsPath}${slug}.md`;
 		return this.http.get(filePath, { responseType: 'text' }).pipe(
-			map((fileContent: string) => {
-				const { data, content } = matter(fileContent); // Extract YAML frontmatter and Markdown content
-				return {
-					metadata: { ...data, slug } as BlogPostMetadata, // Add slug to metadata
-					content: marked.parse(content) // Convert markdown to HTML using marked
-				} as BlogPost;
-			}),
-			catchError(
-				() =>
-					// Return an empty placeholder object in case of errors
-					({ metadata: {} as BlogPostMetadata, content: '' }) as BlogPost
-			)
+			switchMap((fileContent: string) => this.parseMarkdownFile(fileContent, slug)),
+			catchError(() => of({ metadata: {} as BlogPostMetadata, content: '' } as BlogPost))
 		);
 	}
 
@@ -57,22 +49,29 @@ export class BlogService {
 	 * @param slug
 	 * @return Observable<BlogPostMetadata>
 	 */
-	private getBlogPostMetadata(slug: string): Observable<BlogPostMetadata> {
+	private fetchMetadataBySlug(slug: string): Observable<BlogPostMetadata> {
 		const filePath = `${this.postsPath}${slug}.md`;
 		return this.http.get(filePath, { responseType: 'text' }).pipe(
-			map((fileContent: string) => {
-				const { data } = matter(fileContent); // Extract YAML frontmatter
-				return { ...data, slug } as BlogPostMetadata; // Add slug to metadata
-			}),
-			catchError(
-				() =>
-					// Return empty metadata if an error occurs
-					({ title: '', date: '', description: '', status: 'draft', slug }) as BlogPostMetadata
-			)
+			map((fileContent: string) => this.parseMetadata(fileContent, slug)),
+			catchError(() => of({ title: '', date: '', description: '', status: 'draft', slug } as BlogPostMetadata))
 		);
 	}
 
-	private getBlogPostFiles(): Observable<string[]> {
+	private fetchBlogPostFiles(): Observable<string[]> {
 		return this.http.get<string[]>('assets/posts/index.json');
+	}
+	// todo - should I be sanitizing the output HTML
+	private async parseMarkdownFile(fileContent: string, slug: string): Promise<BlogPost> {
+		const { data, content } = matter(fileContent); // Extract YAML frontmatter and Markdown content
+		const parsedContent = await marked.parse(content);
+		return {
+			metadata: { ...data, slug } as BlogPostMetadata, // Add slug to metadata
+			content: parsedContent // Convert markdown to HTML using marked
+		};
+	}
+
+	private parseMetadata(fileContent: string, slug: string): BlogPostMetadata {
+		const { data } = matter(fileContent);
+		return { ...data, slug } as BlogPostMetadata;
 	}
 }

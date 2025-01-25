@@ -4,6 +4,7 @@ export interface BlogPostMetadata {
 	description: string;
 	status: string;
 	slug: string;
+	[key: string]: any; // Allows other fields dynamically
 }
 
 export interface BlogPost {
