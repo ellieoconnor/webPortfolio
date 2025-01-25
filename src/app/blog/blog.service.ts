@@ -9,24 +9,6 @@ import matter from 'gray-matter';
 	providedIn: 'root'
 })
 export class BlogService {
-	/**
-	 * 1. Fetching blog posts
-	 * ** Retrieve Markdown files from src/assets/posts
-	 * ** Optionally parse their metadata (like title, date, and description)
-	 *
-	 * 2. Processing Metadata:
-	 * ** Extract YAML frontmatter (metadata) from the markdown files to display details like titles, dates, or statuses.
-	 *
-	 * 3. Filtering Posts:
-	 * ** Show only published posts or drafts based on their metadata.
-	 *
-	 * 4. Fetching a Specific Post
-	 * ** Retrieve a single Markdown file based on its unique identifier (slug).
-	 *
-	 * 5. Preparing Data for Components
-	 * ** Convert raw Markdown into HTML for rendering in the blog post component.
-	 */
-
 	// Relative folder path where markdown files are stored.
 	private postsPath = 'assets/posts/';
 
@@ -91,12 +73,6 @@ export class BlogService {
 	}
 
 	private getBlogPostFiles(): Observable<string[]> {
-		// NOTE: Replace this with code to dynamically fetch file names if backend/dynamic options are available.
-		// For now, we will simulate file list for development.
-		return new Observable<string[]>((observer) => {
-			// Simulated markdown file names
-			observer.next(['post1.md', 'post2.md', 'post3.md']);
-			observer.complete();
-		});
+		return this.http.get<string[]>('assets/posts/index.json');
 	}
 }

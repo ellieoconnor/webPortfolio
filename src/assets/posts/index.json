@@ -1,0 +1,16 @@
+[
+  {
+    "title": "I Build My Website",
+    "date": "2025-01-25",
+    "description": "How I built my website.",
+    "status": "published",
+    "slug": "blog-build"
+  },
+  {
+    "title": "My First Blog Post",
+    "date": "2025-01-24",
+    "description": "This is a sample blog post as a demonstration.",
+    "status": "published",
+    "slug": "sample-post"
+  }
+]
