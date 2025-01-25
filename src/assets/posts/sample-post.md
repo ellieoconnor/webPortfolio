@@ -1,6 +1,6 @@
 ---
 title: "My First Blog Post"
-date: "2025-01-24"
+datePublished: "2025-01-24"
 description: "This is a sample blog post as a demonstration."
 status: "published"
 ---

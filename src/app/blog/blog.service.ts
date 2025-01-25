@@ -20,13 +20,12 @@ export class BlogService {
 	 * @return {Observable<BlogPostMetadata[]>} An observable emitting an array of blog post metadata.
 	 */
 	fetchAllPostsMetadata(): Observable<BlogPostMetadata[]> {
-		return this.fetchBlogPostFiles().pipe(
-			map((fileNames: string[]) => fileNames.map((fileName) => fileName.replace('.md', ''))),
-			switchMap((slugs: string[]) => {
-				const metadataRequests = slugs.map((slug) => this.fetchMetadataBySlug(slug));
-				return forkJoin(metadataRequests);
-			}),
-			catchError(() => of([]))
+		// Fetch the metadata directly from the index.json file
+		return this.http.get<BlogPostMetadata[]>('assets/posts/index.json').pipe(
+			catchError((error) => {
+				console.error('Error fetching metadata:', error); // Log error if any
+				return of([]); // Return an empty array if there's an error
+			})
 		);
 	}
 
@@ -53,7 +52,7 @@ export class BlogService {
 		const filePath = `${this.postsPath}${slug}.md`;
 		return this.http.get(filePath, { responseType: 'text' }).pipe(
 			map((fileContent: string) => this.parseMetadata(fileContent, slug)),
-			catchError(() => of({ title: '', date: '', description: '', status: 'draft', slug } as BlogPostMetadata))
+			catchError(() => of({ title: '', datePublished: '', description: '', status: 'draft', slug } as BlogPostMetadata))
 		);
 	}
 

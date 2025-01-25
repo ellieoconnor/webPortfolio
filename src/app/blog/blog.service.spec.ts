@@ -29,7 +29,7 @@ describe('BlogService', () => {
 		const mockResponse: BlogPost = {
 			metadata: {
 				title: 'My Blog Post',
-				date: '2023-10-01',
+				datePublished: '2023-10-01',
 				description: 'This is a test post',
 				status: 'published',
 				slug: 'my-blog-post'

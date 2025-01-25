@@ -1,6 +1,6 @@
 ---
 title: "I Build My Website"
-date: "2025-01-25"
+datePublished: "2025-01-25"
 description: "How I built my website."
 status: "published"
 ---
