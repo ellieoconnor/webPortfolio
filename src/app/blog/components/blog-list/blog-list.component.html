@@ -1,7 +1,7 @@
 <h1>Writing</h1>
 <mat-divider></mat-divider>
-<div class="card-container">
-	<mat-card *ngFor="let post of posts">
+<div class="card-container" *ngFor="let post of posts">
+	<mat-card>
 		<mat-card-header>
 			<mat-card-title>{{ post.title }}</mat-card-title>
 			<mat-card-subtitle>{{ post.datePublished | date: 'longDate' }}</mat-card-subtitle>
@@ -10,5 +10,5 @@
 			<p>{{ post.description }}</p>
 		</mat-card-content>
 	</mat-card>
+	<!--	<mat-divider></mat-divider>-->
 </div>
-<mat-divider></mat-divider>
