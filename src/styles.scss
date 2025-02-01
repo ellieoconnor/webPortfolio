@@ -8,11 +8,10 @@
 @use '@angular/material' as mat;
 @use 'm3-theme' as m3;
 @include mat.core();
-
 @font-face {
 	font-family: 'Metropolis';
 	src:
-		url('/assets/fonts/metropolis/otf/Metropolis-Regular.otf') format('otf'),
+		url('/assets/fonts/metropolis/otf/Metropolis-Regular.otf') format('opentype'),
 		url('/assets/fonts/metropolis/ttf/Metropolis-Regular.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;

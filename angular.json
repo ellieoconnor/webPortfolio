@@ -44,7 +44,7 @@
             "styles": [
               "src/m3-theme.scss",
               "src/styles.scss",
-              "src/assets/sass/vars.scss"
+              "src/assets/sass/vars.scss",
             ],
             "scripts": [
             ],
