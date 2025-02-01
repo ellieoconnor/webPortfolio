@@ -7,7 +7,13 @@ import { DatePipe, NgForOf } from '@angular/common';
 	selector: 'app-footer',
 	standalone: true,
 	imports: [FaIconComponent, MatNavList, NgForOf, DatePipe],
-	templateUrl: './footer.component.html',
+	template: `
+		<mat-nav-list class="navigation-item-container">
+			<div class="foot-container">
+				<p>Copyright &#64;{{ currentDate | date: 'y' }}. All Rights Reserved</p>
+			</div>
+		</mat-nav-list>
+	`,
 	styleUrl: './footer.component.scss'
 })
 export class FooterComponent {

@@ -8,4 +8,8 @@ export const routes: Routes = [
 		path: 'contact',
 		loadComponent: () => import('./components/contact-info/contact-info.component').then((m) => m.ContactInfoComponent)
 	}
+	// todo eo: implement a wild card route
+	// {
+	//   path: '**', loadComponent: () => import('./components/not-found.component').then((m) => m.NotFoundComponent)
+	// }
 ];
