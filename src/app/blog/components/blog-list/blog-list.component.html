@@ -1,8 +1,8 @@
 <h1>Writing</h1>
-<mat-divider></mat-divider>
+<mat-divider [style.border-color]="'var(--sys-secondary)'"></mat-divider>
 <div class="card-container" *ngFor="let post of posts">
 	<h2>{{ post.title }}</h2>
 	<span>{{ post.datePublished | date: 'longDate' }}</span>
 	<p>{{ post.description }}</p>
-	<mat-divider></mat-divider>
+	<mat-divider [style.border-color]="'var(--sys-secondary)'"></mat-divider>
 </div>
