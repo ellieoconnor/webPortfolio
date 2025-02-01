@@ -1,4 +1,4 @@
-import { ThemeLogicService } from '../theme-logic.service';
+import { ThemeLogicService } from '../../services/theme-logic.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NavigationLinksComponent } from './navigation-links.component';
 import { RouterTestingModule } from '@angular/router/testing';

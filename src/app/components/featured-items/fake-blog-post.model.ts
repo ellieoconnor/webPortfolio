@@ -1,4 +1,4 @@
-export interface BlogPost {
+export interface FakeBlogPost {
 	title: string; // blog post title
 	subtitle?: string; // optional subtitle
 	datePublished: Date; // date the post is published

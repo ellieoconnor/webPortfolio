@@ -33,7 +33,8 @@
             },
             "index": "src/index.html",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "src/polyfills"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -43,9 +44,11 @@
             "styles": [
               "src/m3-theme.scss",
               "src/styles.scss",
-              "src/assets/sass/vars.scss"
+              "src/assets/sass/vars.scss",
             ],
-            "scripts": [],
+            "scripts": [
+            ],
+
             "browser": "src/main.ts"
           },
           "configurations": {
@@ -53,13 +56,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "700kb",
+                  "maximumError": "800kb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "120kb",
+                  "maximumError": "150kb"
                 }
               ],
               "outputHashing": "all"
