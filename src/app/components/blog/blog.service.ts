@@ -9,8 +9,8 @@ import { marked } from 'marked';
 export class BlogService {
 	constructor(private http: HttpClient) {}
 
-	getPostsList(): Observable<{ title: string; slug: string }[]> {
-		return this.http.get<{ title: string; slug: string }[]>('assets/posts/posts.json');
+	getPostsList(): Observable<{ title: string; slug: string; date: string; summary: string }[]> {
+		return this.http.get<{ title: string; slug: string; date: string; summary: string }[]>('/assets/posts/posts.json');
 	}
 
 	getSinglePost(slug: string) {

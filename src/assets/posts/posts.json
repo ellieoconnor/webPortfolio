@@ -1,4 +1,13 @@
 [
-  "first-post",
-  "second-post"
+  {
+    "title": "My First Blog Post",
+    "slug": "my-first-post-1",
+    "date": "2025-02-13",
+    "summary":"This is the summary for my first post."
+  }{
+    "title": "My Second Blog Post",
+    "slug": "my-second-blog-post-1",
+    "date": "2025-02-13",
+    "summary":"A second blog post summary"
+  }
 ]
