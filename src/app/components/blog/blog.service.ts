@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { marked } from 'marked';
 
 @Injectable({
@@ -9,11 +9,11 @@ import { marked } from 'marked';
 export class BlogService {
 	constructor(private http: HttpClient) {}
 
-	getPosts() {
-		return this.http.get('assets/posts/posts.json');
+	getPostsList(): Observable<{ title: string; slug: string }[]> {
+		return this.http.get<{ title: string; slug: string }[]>('assets/posts/posts.json');
 	}
 
 	getSinglePost(slug: string) {
-		return this.http.get(`/assets/blog/${slug}.md`, { responseType: 'text' }).pipe(map((markdown) => marked.parse(markdown)));
+		return this.http.get(`/assets/posts/${slug}.md`, { responseType: 'text' }).pipe(map((markdown) => marked.parse(markdown)));
 	}
 }

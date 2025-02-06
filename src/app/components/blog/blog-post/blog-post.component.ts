@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { injectContentFiles } from '@analogjs/content';
 
 @Component({
 	selector: 'app-blog-post',

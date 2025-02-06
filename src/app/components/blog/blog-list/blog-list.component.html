@@ -1,1 +1,6 @@
-<p>blog-list works!</p>
+<h1>Writing</h1>
+<div *ngFor="let posts of posts">
+	<header>{{ posts.title }}</header>
+	<span>{{ posts.date }}</span>
+	<p>{{ posts.summary }}</p>
+</div>
