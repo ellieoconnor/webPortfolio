@@ -8,23 +8,6 @@
 @use '@angular/material' as mat;
 @use 'm3-theme' as m3;
 @include mat.core();
-@font-face {
-	font-family: 'Metropolis';
-	src:
-		url('https://metropolis.typehaus.org/Metropolis-Regular.woff2') format('woff2'),
-		url('https://metropolis.typehaus.org/Metropolis-Regular.woff') format('woff');
-	font-weight: 400;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Metropolis';
-	src:
-		url('https://metropolis.typehaus.org/Metropolis-Bold.woff2') format('woff2'),
-		url('https://metropolis.typehaus.org/Metropolis-Bold.woff') format('woff');
-	font-weight: 700;
-	font-style: normal;
-}
 
 :root {
 	@include mat.all-component-themes(m3.$light-theme);

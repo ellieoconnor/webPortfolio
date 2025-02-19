@@ -1,25 +1,30 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BlogService } from '../blog.service';
+import { Observable, tap } from 'rxjs';
+import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
 
 @Component({
 	selector: 'app-blog-post',
 	standalone: true,
-	imports: [],
+	imports: [AsyncPipe, NgIf, CommonModule],
 	templateUrl: './blog-post.component.html',
 	styleUrl: './blog-post.component.scss'
 })
-export class BlogPostComponent {
-	// slug: string;
-	// post: any;
+export class BlogPostComponent implements OnInit {
+	postContent$: Observable<string> | null = null;
 
-	constructor(private route: ActivatedRoute) {}
+	constructor(
+		private route: ActivatedRoute,
+		private blogService: BlogService
+	) {}
 
-	// 	this.slug = this.route.snapshot.paramMap.get('slug') ?? '';
-	//
-	// 	// Fetch the blog post using the slug
-	// 	const contentFiles = injectContentFiles();
-	// 	this.post = contentFiles.find((file) => file.slug === this.slug);
-	// }
+	ngOnInit(): void {
+		const slug = this.route.snapshot.paramMap.get('slug');
+		if (slug) {
+			this.postContent$ = this.blogService
+				.getSinglePost(slug)
+				.pipe(tap((html) => console.log('HTML being emitted to postContent$:', html)));
+		}
+	}
 }
-
-// export default BlogPostComponent;
