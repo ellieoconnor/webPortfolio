@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { BlogPost } from './blog-post.model';
+import { BlogPost } from '../blog/blog-post.model';
 
 @Component({
 	selector: 'app-featured-items',
