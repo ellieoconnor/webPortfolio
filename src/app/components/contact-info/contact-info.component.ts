@@ -5,7 +5,7 @@ import { NgForOf } from '@angular/common';
 import { FaIconComponent, IconDefinition } from '@fortawesome/angular-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 interface ContactItem {
 	label: string;

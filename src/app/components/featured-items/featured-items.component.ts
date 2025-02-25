@@ -1,18 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
-import { BlogPost } from './blog-post.model';
+import { BlogPost } from '../blog/blog-post.model';
+import { BlogService } from '../blog/blog.service';
+import { RouterLink } from '@angular/router';
+import { MatButton } from '@angular/material/button';
 
 @Component({
 	selector: 'app-featured-items',
 	standalone: true,
-	imports: [CommonModule, MatCardModule, FontAwesomeModule],
+	imports: [CommonModule, MatCardModule, FontAwesomeModule, RouterLink, MatButton],
 	templateUrl: './featured-items.component.html',
 	styleUrls: ['./featured-items.component.scss']
 })
-export class FeaturedItemsComponent {
+export class FeaturedItemsComponent implements OnInit {
 	currentDate = new Date();
 	/* List of Icons */
 	icons = {
@@ -26,24 +29,19 @@ export class FeaturedItemsComponent {
 	};
 
 	/* Blog Posts */
-	blogPosts: BlogPost[] = [
-		{
-			title: 'Blog Post Number One',
-			datePublished: this.currentDate,
-			isPublished: true,
-			summary: 'This is a short summary about the first blog I posted.'
-		},
-		{
-			title: 'How I Built My Website',
-			datePublished: new Date(2024, 11, 10),
-			isPublished: true,
-			summary: 'I got a job really on a whim and a lot of faith in me. I wanted to put something out there though...'
-		},
-		{
-			title: 'What is Obsidian',
-			datePublished: new Date(2024, 12, 23),
-			isPublished: true,
-			summary: 'Welcome to my second brain. How to setup your obsidian and a tour through my vault'
-		}
-	];
+	blogPosts: BlogPost[] = [];
+
+	constructor(private blogService: BlogService) {}
+
+	ngOnInit() {
+		this.blogService.getPostsList().subscribe(
+			(posts: BlogPost[]) => {
+				// Filter only featured posts and limit it by the top 3
+				this.blogPosts = posts.filter((post) => post.isFeatured).slice(0, 3);
+			},
+			(error) => {
+				console.error('Error fetching posts:', error);
+			}
+		);
+	}
 }

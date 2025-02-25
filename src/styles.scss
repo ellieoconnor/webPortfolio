@@ -9,24 +9,6 @@
 @use 'm3-theme' as m3;
 @include mat.core();
 
-@font-face {
-	font-family: 'Metropolis';
-	src:
-		url('/assets/fonts/metropolis/otf/Metropolis-Regular.otf') format('otf'),
-		url('/assets/fonts/metropolis/ttf/Metropolis-Regular.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-
-@font-face {
-	font-family: 'Metropolis';
-	src:
-		url('/assets/fonts/metropolis/otf/Metropolis-Bold.otf') format('otf'),
-		url('/assets/fonts/metropolis/ttf/Metropolis-Bold.ttf') format('truetype');
-	font-weight: bold;
-	font-style: normal;
-}
-
 :root {
 	@include mat.all-component-themes(m3.$light-theme);
 	@include mat.system-level-colors(m3.$light-theme);
@@ -51,7 +33,20 @@ body {
 	max-width: 950px;
 	min-width: 600px; // somewhat arbitrary min width, for forms to look "OK" and to know their min boundary.
 	font-size: 16px;
-	font-family: 'Metropolis', 'Helvetica Neue', sans-serif;
+	font-family: 'Metropolis', 'Nunito', 'Inter', sans-serif;
+}
+
+header {
+	height: 4rem;
+}
+
+h1 {
+	font-weight: 500;
+	font-size: 2.25rem;
+}
+
+h2 {
+	font-weight: 500;
 }
 
 p {

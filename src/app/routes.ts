@@ -7,5 +7,18 @@ export const routes: Routes = [
 	{
 		path: 'contact',
 		loadComponent: () => import('./components/contact-info/contact-info.component').then((m) => m.ContactInfoComponent)
+	},
+	{
+		path: 'blog-posts',
+		loadComponent: () => import('./components/blog/blog-list/blog-list.component').then((m) => m.BlogListComponent)
+	},
+	{
+		path: 'blog/:slug',
+		loadComponent: () => import('./components/blog/blog-post/blog-post.component').then((m) => m.BlogPostComponent)
+	},
+	// todo eo: implement a wild card route
+	{
+		path: '**',
+		redirectTo: '/home'
 	}
 ];
