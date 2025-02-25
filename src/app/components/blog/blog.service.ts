@@ -2,15 +2,17 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, from, Observable, of, switchMap } from 'rxjs';
 import { marked } from 'marked';
+import { BlogPost } from './blog-post.model';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class BlogService {
+	private postsUrl = 'assets/posts/posts.json';
 	constructor(private http: HttpClient) {}
 
-	getPostsList(): Observable<{ title: string; slug: string; date: string; summary: string }[]> {
-		return this.http.get<{ title: string; slug: string; date: string; summary: string }[]>('/assets/posts/posts.json');
+	getPostsList(): Observable<BlogPost[]> {
+		return this.http.get<BlogPost[]>(this.postsUrl);
 	}
 
 	getSinglePost(slug: string): Observable<string> {

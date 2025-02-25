@@ -44,7 +44,7 @@ export class NavigationLinksComponent implements OnInit {
 
 	links: Link[] = [
 		{ label: 'Home', href: '/home', target: '_self' },
-		{ label: 'Writing', href: '/blog', target: '_self' },
+		{ label: 'Writing', href: '/blog-posts', target: '_self' },
 		{ label: 'Contact', href: '/contact', target: '_self' }
 	];
 

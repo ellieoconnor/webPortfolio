@@ -4,6 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { NgForOf } from '@angular/common';
 import { MatDivider } from '@angular/material/divider';
 import { HttpClientModule } from '@angular/common/http';
+import { BlogPost } from '../blog-post.model';
 
 @Component({
 	selector: 'app-blog-list',
@@ -13,7 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 	styleUrl: './blog-list.component.scss'
 })
 export class BlogListComponent implements OnInit {
-	posts: { title: string; slug: string; date: string; summary: string }[] = [];
+	posts: BlogPost[] = [];
 
 	constructor(
 		private blogService: BlogService,

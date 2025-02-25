@@ -9,7 +9,7 @@ export const routes: Routes = [
 		loadComponent: () => import('./components/contact-info/contact-info.component').then((m) => m.ContactInfoComponent)
 	},
 	{
-		path: 'blog',
+		path: 'blog-posts',
 		loadComponent: () => import('./components/blog/blog-list/blog-list.component').then((m) => m.BlogListComponent)
 	},
 	{

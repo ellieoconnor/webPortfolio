@@ -2,13 +2,15 @@
   {
     "title": "My First Blog Post",
     "slug": "first-post",
-    "date": "2025-02-13",
-    "summary":"This is the summary for my first post."
+    "datePublished": "2025-02-13",
+    "summary":"This is the summary for my first post.",
+    "isFeatured": true
   },
   {
     "title": "My Second Blog Post",
     "slug": "my-second-blog-post-1",
-    "date": "2025-02-13",
-    "summary":"A second blog post summary"
+    "datePublished": "2025-02-13",
+    "summary":"A second blog post summary",
+    "isFeatured": true
   }
 ]
