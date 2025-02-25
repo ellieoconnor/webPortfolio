@@ -9,6 +9,7 @@ import { BlogPost } from './blog-post.model';
 })
 export class BlogService {
 	private postsUrl = 'assets/posts/posts.json';
+
 	constructor(private http: HttpClient) {}
 
 	getPostsList(): Observable<BlogPost[]> {
