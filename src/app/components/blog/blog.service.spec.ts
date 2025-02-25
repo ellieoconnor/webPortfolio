@@ -49,4 +49,17 @@ describe('BlogService', () => {
 		expect(req.request.method).toEqual('GET');
 		req.flush(mockMarkdown); // Provide mock Markdown as response
 	});
+
+	it('should return error HTML when fetching a single blog post fails', () => {
+		const slug = 'non-existent-post';
+		const mockErrorMessage = '404 Not Found';
+
+		service.getSinglePost(slug).subscribe((content) => {
+			expect(content).toEqual('<h1>Error</h1><p>Post could not be loaded.</p>');
+		});
+
+		const req = httpTestingController.expectOne(`/assets/posts/${slug}.md`);
+		expect(req.request.method).toEqual('GET');
+		req.flush(mockErrorMessage, { status: 404, statusText: 'Not Found' }); // Simulate an error response
+	});
 });
