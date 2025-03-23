@@ -1,6 +1,6 @@
 ---
 title: 'Introducing Myself: From Classroom Teacher to Full-Stack Developer'
-date: 2023-10-01
+date: 2023-03-23
 slug: "first-post"
 ---
 
