@@ -9,6 +9,7 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 	styleUrls: ['./about-header.component.scss']
 })
 export class AboutHeaderComponent {
-	bio: string = `Hi, I’m Ellie. I’m a front-end developer, avid reader, and eternal optimist. I work at B&L Information Systems, where I use Angular and JavaScript/TypeScript to build ERP solutions that streamline workflows for the metal-casting and foundry industries.`;
+	bio: string = `Hi, I'm Ellie, and I am a full-stack software developer. At B&L Information Systems, I create digital solutions with Angular and JavaScript/TypeScript that transform complex challenges into seamless experiences. I enjoy bringing ideas to life through code and am always eager to help others solve their digital challenges. Interested in exploring how technology can solve your unique challenges?
+`;
 	// todo: Add a link to my resume page on the B&L word.
 }
