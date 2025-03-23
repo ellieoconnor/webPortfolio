@@ -1,5 +1,5 @@
 ---
-title: 'My First Blog Post'
+title: 'Introducing Myself: From Classroom Teacher to Full-Stack Developer'
 date: 2023-10-01
 slug: "first-post"
 ---

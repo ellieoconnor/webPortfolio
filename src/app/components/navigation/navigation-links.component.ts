@@ -45,7 +45,8 @@ export class NavigationLinksComponent implements OnInit {
 	links: Link[] = [
 		{ label: 'Home', href: '/home', target: '_self' },
 		{ label: 'Writing', href: '/blog-posts', target: '_self' },
-		{ label: 'Contact', href: '/contact', target: '_self' }
+		{ label: 'Contact', href: '/contact', target: '_self' },
+		{ label: 'My Work', href: '/my-work', target: '_self' }
 	];
 
 	constructor(private themeService: ThemeLogicService) {}

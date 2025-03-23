@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { ContactInfoComponent } from './components/contact-info/contact-info.component';
 
 export const routes: Routes = [
 	{ path: '', redirectTo: '/home', pathMatch: 'full' }, // Redirect root to home
@@ -7,6 +6,10 @@ export const routes: Routes = [
 	{
 		path: 'contact',
 		loadComponent: () => import('./components/contact-info/contact-info.component').then((m) => m.ContactInfoComponent)
+	},
+	{
+		path: 'my-work',
+		loadComponent: () => import('./components/project-list/project-list.component').then((m) => m.ProjectListComponent)
 	},
 	{
 		path: 'blog-posts',
