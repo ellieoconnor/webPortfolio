@@ -9,8 +9,9 @@ import { faHamburger, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { MatButtonModule } from '@angular/material/button';
 import { ThemeLogicService } from '../theme-logic.service';
 import { RouterLink, RouterModule } from '@angular/router';
-import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
+import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
 
 interface Link {
 	label: string;
@@ -33,7 +34,8 @@ interface Link {
 		RouterModule,
 		MatMenuTrigger,
 		MatMenu,
-		MatSlideToggle
+		MatSlideToggle,
+		MatMenuItem
 	],
 	templateUrl: './navigation-links.component.html',
 	styleUrls: ['./navigation-links.component.scss']
@@ -47,7 +49,7 @@ export class NavigationLinksComponent implements OnInit {
 	icons = {
 		darkModeMoon: faMoon,
 		lightModeSun: faSun,
-		menu: faHamburger
+		menu: faBars
 	};
 
 	links: Link[] = [

@@ -28,13 +28,15 @@
 	<button [matMenuTriggerFor]="menu" mat-icon-button aria-label="Menu">
 		<fa-icon [icon]="icons.menu"></fa-icon>
 	</button>
-	<mat-menu #menu="matMenu">
-		<button *ngFor="let link of links" [routerLink]="link.href" [target]="link?.target" mat-menu-item>
-			{{ link.label }}
-		</button>
-		<div class="theme-toggle-item">
-			<span>Dark Mode</span>
-			<mat-slide-toggle [checked]="isDarkMode" (change)="toggleDarkMode()"></mat-slide-toggle>
-		</div>
-	</mat-menu>
+	<div class="navigation-menu-items">
+		<mat-menu #menu="matMenu">
+			<button *ngFor="let link of links" [routerLink]="link.href" [target]="link?.target" mat-menu-item>
+				{{ link.label }}
+			</button>
+			<div class="theme-toggle-item">
+				<span>Dark Mode</span>
+				<mat-slide-toggle [checked]="isDarkMode" (change)="toggleDarkMode()" (click)="$event.stopPropagation()"></mat-slide-toggle>
+			</div>
+		</mat-menu>
+	</div>
 </div>
