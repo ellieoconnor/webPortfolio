@@ -16,6 +16,19 @@ main {
 	width: 100%;
 }
 
+header {
+	width: 100%;
+
+	@media (max-width: 768px) {
+		padding: 0 1rem;
+		overflow-x: hidden;
+	}
+
+	@media (max-width: 480px) {
+		padding: 0 0.5rem;
+	}
+}
+
 app-footer {
 	align-self: flex-start;
 }

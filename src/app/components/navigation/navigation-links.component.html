@@ -1,23 +1,40 @@
-<mat-nav-list class="navigation-item-container">
-	<div class="nav-links">
-		<a
-			class="link-item"
-			*ngFor="let link of links; first as isFirst"
-			[class.first-link]="isFirst"
-			[target]="link?.target"
-			[routerLink]="link.href">
+<div class="larger-navigation" *ngIf="!isMobileView">
+	<mat-nav-list class="navigation-item-container">
+		<div class="nav-links">
+			<a
+				class="link-item"
+				*ngFor="let link of links; first as isFirst"
+				[class.first-link]="isFirst"
+				[target]="link?.target"
+				[routerLink]="link.href">
+				{{ link.label }}
+			</a>
+		</div>
+		<!-- Dark and Light Mode Toggle Button -->
+		<div class="toggle-container">
+			<button (click)="toggleDarkMode()">
+				<ng-container *ngIf="isDarkMode; else lightModeTemplate">
+					<fa-icon [icon]="icons.lightModeSun"></fa-icon>
+				</ng-container>
+				<ng-template #lightModeTemplate>
+					<fa-icon [icon]="icons.darkModeMoon"></fa-icon>
+				</ng-template>
+			</button>
+		</div>
+	</mat-nav-list>
+</div>
+
+<div class="mobile-navigation" *ngIf="isMobileView">
+	<button [matMenuTriggerFor]="menu" mat-icon-button aria-label="Menu">
+		<fa-icon [icon]="icons.menu"></fa-icon>
+	</button>
+	<mat-menu #menu="matMenu">
+		<button *ngFor="let link of links" [routerLink]="link.href" [target]="link?.target" mat-menu-item>
 			{{ link.label }}
-		</a>
-	</div>
-	<!-- Dark and Light Mode Toggle Button -->
-	<div class="toggle-container">
-		<button (click)="toggleDarkMode()">
-			<ng-container *ngIf="isDarkMode; else lightModeTemplate">
-				<fa-icon [icon]="icons.lightModeSun"></fa-icon>
-			</ng-container>
-			<ng-template #lightModeTemplate>
-				<fa-icon [icon]="icons.darkModeMoon"></fa-icon>
-			</ng-template>
 		</button>
-	</div>
-</mat-nav-list>
+		<div class="theme-toggle-item">
+			<span>Dark Mode</span>
+			<mat-slide-toggle [checked]="isDarkMode" (change)="toggleDarkMode()"></mat-slide-toggle>
+		</div>
+	</mat-menu>
+</div>
