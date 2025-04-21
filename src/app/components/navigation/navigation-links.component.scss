@@ -8,7 +8,7 @@
 	font-size: 1.15rem;
 
 	// todo: responsiveness will need to tweak it.
-	@media (max-width: 768px) {
+	@media (max-width: 767px) {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -26,10 +26,6 @@
 		height: 2rem;
 		justify-content: center;
 	}
-
-	@media (max-width: 767px) {
-		display: none;
-	}
 }
 
 .theme-toggle-item {
@@ -46,7 +42,7 @@
 
 .nav-links {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	gap: 1.5rem;
 	justify-content: flex-start;
 
