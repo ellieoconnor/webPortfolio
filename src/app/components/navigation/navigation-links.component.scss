@@ -8,7 +8,8 @@
 	font-size: 1.15rem;
 
 	// todo: responsiveness will need to tweak it.
-	@media (max-width: 769px) {
+	@media (max-width: 767px) {
+		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 1rem;
@@ -27,11 +28,39 @@
 	}
 }
 
+.theme-toggle-item {
+	display: flex;
+	align-items: center;
+	padding: 0 1rem;
+	height: 48px;
+	width: 100%;
+
+	span {
+		margin-right: 1rem;
+	}
+}
+
 .nav-links {
 	display: flex;
 	flex-direction: row;
 	gap: 1.5rem;
 	justify-content: flex-start;
+
+	@media (max-width: 768px) {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+
+		.link-item {
+			padding: 0.5rem 1rem;
+			font-size: 14px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		padding: 8px 10px;
+		font-size: 12px;
+	}
 }
 
 .link-item {
