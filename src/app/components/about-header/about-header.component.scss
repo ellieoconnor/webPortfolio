@@ -31,6 +31,10 @@ section {
 	margin-bottom: 1.25rem;
 }
 
+.bio-text {
+	white-space: pre-line;
+}
+
 @media (max-width: 768px) {
 	.about-container {
 		flex-direction: column;
