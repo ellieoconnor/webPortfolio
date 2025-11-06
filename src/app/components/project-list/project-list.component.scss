@@ -1,0 +1,10 @@
+.border {
+	position: relative;
+	border-radius: var(--border-radius-cards);
+	padding: 4px;
+	box-sizing: border-box;
+	overflow: hidden;
+	display: flex;
+	background: linear-gradient(to right, #b0c8ed, #e3bae0); /* Gradient background for the border */
+	width: 50%;
+}
