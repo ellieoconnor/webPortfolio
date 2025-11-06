@@ -22,9 +22,7 @@ export class BlogPostComponent implements OnInit {
 	ngOnInit(): void {
 		const slug = this.route.snapshot.paramMap.get('slug');
 		if (slug) {
-			this.postContent$ = this.blogService
-				.getSinglePost(slug)
-				.pipe(tap((html) => console.log('HTML being emitted to postContent$:', html)));
+			this.postContent$ = this.blogService.getSinglePost(slug);
 		}
 	}
 }
