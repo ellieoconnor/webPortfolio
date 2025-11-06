@@ -1,3 +1,32 @@
-<div>
-	<h1>COMING SOON</h1>
+<div class="proejcts-container">
+	<h1>Projects</h1>
+
+	<div class="projects-grid border">
+		@for (project of projectList; track project.title) {
+			<mat-card class="project-card">
+				<mat-card-header>
+					<mat-card-title>{{ project.title }}</mat-card-title>
+				</mat-card-header>
+
+				<mat-card-content>
+					<p>{{ project.description }}</p>
+
+					<div class="tech-stack">
+						<mat-chip-set>
+							@for (tech of project.techUsed; track tech) {
+								<mat-chip>{{ tech }}</mat-chip>
+							}
+						</mat-chip-set>
+					</div>
+				</mat-card-content>
+
+				<mat-card-actions>
+					<a [href]="project.githubUrl" mat-button target="_blank"> View Code </a>
+					@if (project.liveUrl) {
+						<a [href]="project.liveUrl" mat-button target="_blank"> View Live </a>
+					}
+				</mat-card-actions>
+			</mat-card>
+		}
+	</div>
 </div>
