@@ -7,11 +7,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { BlogPost } from '../blog-post.model';
 
 @Component({
-	selector: 'app-blog-list',
-	standalone: true,
-	imports: [RouterModule, NgForOf, MatDivider],
-	templateUrl: './blog-list.component.html',
-	styleUrl: './blog-list.component.scss'
+    selector: 'app-blog-list',
+    imports: [RouterModule, NgForOf, MatDivider],
+    templateUrl: './blog-list.component.html',
+    styleUrl: './blog-list.component.scss'
 })
 export class BlogListComponent implements OnInit {
 	posts: BlogPost[] = [];

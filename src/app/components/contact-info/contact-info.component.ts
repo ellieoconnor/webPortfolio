@@ -14,11 +14,10 @@ interface ContactItem {
 }
 
 @Component({
-	selector: 'app-contact-info',
-	standalone: true,
-	imports: [MatDivider, RouterModule, NgForOf, FaIconComponent],
-	templateUrl: './contact-info.component.html',
-	styleUrl: './contact-info.component.scss'
+    selector: 'app-contact-info',
+    imports: [MatDivider, RouterModule, NgForOf, FaIconComponent],
+    templateUrl: './contact-info.component.html',
+    styleUrl: './contact-info.component.scss'
 })
 export class ContactInfoComponent {
 	// Email address split for better protection

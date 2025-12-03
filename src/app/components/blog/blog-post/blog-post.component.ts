@@ -5,11 +5,10 @@ import { Observable, tap } from 'rxjs';
 import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
 
 @Component({
-	selector: 'app-blog-post',
-	standalone: true,
-	imports: [AsyncPipe, NgIf, CommonModule],
-	templateUrl: './blog-post.component.html',
-	styleUrl: './blog-post.component.scss'
+    selector: 'app-blog-post',
+    imports: [AsyncPipe, NgIf, CommonModule],
+    templateUrl: './blog-post.component.html',
+    styleUrl: './blog-post.component.scss'
 })
 export class BlogPostComponent implements OnInit {
 	postContent$: Observable<string> | null = null;
