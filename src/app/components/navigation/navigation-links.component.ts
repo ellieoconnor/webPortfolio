@@ -5,7 +5,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { faHamburger, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { MatButtonModule } from '@angular/material/button';
 import { ThemeLogicService } from '../theme-logic.service';
 import { RouterLink, RouterModule } from '@angular/router';
@@ -20,24 +20,24 @@ interface Link {
 }
 
 @Component({
-    selector: 'app-navigation-links',
-    imports: [
-        CommonModule,
-        MatToolbarModule,
-        MatSidenavModule,
-        MatListModule,
-        MatButtonToggleModule,
-        FaIconComponent,
-        MatButtonModule,
-        RouterLink,
-        RouterModule,
-        MatMenuTrigger,
-        MatMenu,
-        MatSlideToggle,
-        MatMenuItem
-    ],
-    templateUrl: './navigation-links.component.html',
-    styleUrls: ['./navigation-links.component.scss']
+	selector: 'app-navigation-links',
+	imports: [
+		CommonModule,
+		MatToolbarModule,
+		MatSidenavModule,
+		MatListModule,
+		MatButtonToggleModule,
+		FaIconComponent,
+		MatButtonModule,
+		RouterLink,
+		RouterModule,
+		MatMenuTrigger,
+		MatMenu,
+		MatSlideToggle,
+		MatMenuItem
+	],
+	templateUrl: './navigation-links.component.html',
+	styleUrls: ['./navigation-links.component.scss']
 })
 export class NavigationLinksComponent implements OnInit {
 	isDarkMode: boolean = false;
