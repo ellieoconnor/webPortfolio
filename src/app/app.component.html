@@ -1,21 +1,23 @@
 <!-- app.component.html -->
 <div>
-	<div class="modal-overlay" *ngIf="isLoading">
-		<!-- Modal overlay to show during loading, controlled by an ngIf directive -->
-	</div>
+  @if (isLoading) {
+    <div class="modal-overlay">
+      <!-- Modal overlay to show during loading, controlled by an ngIf directive -->
+    </div>
+  }
 
-	<div class="container" #websiteContent>
-		<!-- Header section with Angular Material toolbar -->
-		<header>
-			<!-- Navigation links component -->
-			<app-navigation-links #navigationHeader></app-navigation-links>
-		</header>
+  <div class="container" #websiteContent>
+    <!-- Header section with Angular Material toolbar -->
+    <header>
+      <!-- Navigation links component -->
+      <app-navigation-links #navigationHeader></app-navigation-links>
+    </header>
 
-		<!-- Main content area with router outlet for dynamic content -->
-		<main>
-			<!-- Router outlet for loading different components based on the route -->
-			<router-outlet></router-outlet>
-		</main>
-		<app-footer></app-footer>
-	</div>
+    <!-- Main content area with router outlet for dynamic content -->
+    <main>
+      <!-- Router outlet for loading different components based on the route -->
+      <router-outlet></router-outlet>
+    </main>
+    <app-footer></app-footer>
+  </div>
 </div>

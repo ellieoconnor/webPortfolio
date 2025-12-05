@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -22,20 +22,19 @@ interface Link {
 @Component({
 	selector: 'app-navigation-links',
 	imports: [
-		CommonModule,
-		MatToolbarModule,
-		MatSidenavModule,
-		MatListModule,
-		MatButtonToggleModule,
-		FaIconComponent,
-		MatButtonModule,
-		RouterLink,
-		RouterModule,
-		MatMenuTrigger,
-		MatMenu,
-		MatSlideToggle,
-		MatMenuItem
-	],
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatButtonToggleModule,
+    FaIconComponent,
+    MatButtonModule,
+    RouterLink,
+    RouterModule,
+    MatMenuTrigger,
+    MatMenu,
+    MatSlideToggle,
+    MatMenuItem
+],
 	templateUrl: './navigation-links.component.html',
 	styleUrls: ['./navigation-links.component.scss']
 })

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
     selector: 'app-about-header',
-    imports: [CommonModule, NgOptimizedImage],
+    imports: [NgOptimizedImage],
     templateUrl: './about-header.component.html',
     styleUrls: ['./about-header.component.scss']
 })

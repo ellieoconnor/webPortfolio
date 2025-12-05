@@ -1,17 +1,19 @@
 <h2>{{ phrases.title }}</h2>
 <div class="featured-items-container">
-	<div class="border" *ngFor="let post of blogPosts">
-		<mat-card class="clickable-card" [routerLink]="['/blog/', post.slug]">
-			<mat-card-header>
-				<mat-card-title class="blog-title">{{ post.title }}</mat-card-title>
-			</mat-card-header>
-			<mat-card-content class="blog-summary">{{ post.summary }}</mat-card-content>
-			<mat-card-footer>
-				<fa-icon class="date-icon" [icon]="icons.date"></fa-icon>
-				<span class="publish-date">{{ post.datePublished | date: 'longDate' }}</span>
-			</mat-card-footer>
-		</mat-card>
-	</div>
+  @for (post of blogPosts; track post) {
+    <div class="border">
+      <mat-card class="clickable-card" [routerLink]="['/blog/', post.slug]">
+        <mat-card-header>
+          <mat-card-title class="blog-title">{{ post.title }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="blog-summary">{{ post.summary }}</mat-card-content>
+        <mat-card-footer>
+          <fa-icon class="date-icon" [icon]="icons.date"></fa-icon>
+          <span class="publish-date">{{ post.datePublished | date: 'longDate' }}</span>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+  }
 </div>
 <!--<a class="more-articles" [routerLink]="['/blog-posts']">{{ phrases.more }}</a>-->
 <button class="more-articles" [routerLink]="['/blog-posts']" mat-button>{{ phrases.more }}</button>

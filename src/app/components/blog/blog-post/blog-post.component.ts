@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BlogService } from '../blog.service';
 import { Observable } from 'rxjs';
-import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 
 @Component({
 	selector: 'app-blog-post',
-	imports: [AsyncPipe, NgIf, CommonModule],
+	imports: [AsyncPipe, CommonModule],
 	templateUrl: './blog-post.component.html',
 	styleUrl: './blog-post.component.scss'
 })
