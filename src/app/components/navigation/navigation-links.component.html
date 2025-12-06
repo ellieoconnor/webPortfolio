@@ -1,48 +1,44 @@
 @if (!isMobileView) {
-  <div class="larger-navigation">
-    <mat-nav-list class="navigation-item-container">
-      <div class="nav-links">
-        @for (link of links; track link; let isFirst = $first) {
-          <a
-            class="link-item"
-            [class.first-link]="isFirst"
-            [target]="link?.target"
-            [routerLink]="link.href">
-            {{ link.label }}
-          </a>
-        }
-      </div>
-      <!-- Dark and Light Mode Toggle Button -->
-      <div class="toggle-container">
-        <button (click)="toggleDarkMode()">
-          @if (isDarkMode) {
-            <fa-icon [icon]="icons.lightModeSun"></fa-icon>
-          } @else {
-            <fa-icon [icon]="icons.darkModeMoon"></fa-icon>
-          }
-        </button>
-      </div>
-    </mat-nav-list>
-  </div>
+	<div class="larger-navigation">
+		<mat-nav-list class="navigation-item-container">
+			<div class="nav-links">
+				@for (link of links; track link; let isFirst = $first) {
+					<a class="link-item" [class.first-link]="isFirst" [target]="link?.target" [routerLink]="link.href">
+						{{ link.label }}
+					</a>
+				}
+			</div>
+			<!-- Dark and Light Mode Toggle Button -->
+			<div class="toggle-container">
+				<button (click)="toggleDarkMode()">
+					@if (isDarkMode) {
+						<fa-icon [icon]="icons.lightModeSun"></fa-icon>
+					} @else {
+						<fa-icon [icon]="icons.darkModeMoon"></fa-icon>
+					}
+				</button>
+			</div>
+		</mat-nav-list>
+	</div>
 }
 
 @if (isMobileView) {
-  <div class="mobile-navigation">
-    <button [matMenuTriggerFor]="menu" mat-icon-button aria-label="Menu">
-      <fa-icon [icon]="icons.menu"></fa-icon>
-    </button>
-    <div class="navigation-menu-items">
-      <mat-menu #menu="matMenu">
-        @for (link of links; track link) {
-          <button [routerLink]="link.href" [target]="link?.target" mat-menu-item>
-            {{ link.label }}
-          </button>
-        }
-        <div class="theme-toggle-item">
-          <span>Dark Mode</span>
-          <mat-slide-toggle [checked]="isDarkMode" (change)="toggleDarkMode()" (click)="$event.stopPropagation()"></mat-slide-toggle>
-        </div>
-      </mat-menu>
-    </div>
-  </div>
+	<div class="mobile-navigation">
+		<button [matMenuTriggerFor]="menu" mat-icon-button aria-label="Menu">
+			<fa-icon [icon]="icons.menu"></fa-icon>
+		</button>
+		<div class="navigation-menu-items">
+			<mat-menu #menu="matMenu">
+				@for (link of links; track link) {
+					<button [routerLink]="link.href" [target]="link?.target" mat-menu-item>
+						{{ link.label }}
+					</button>
+				}
+				<div class="theme-toggle-item">
+					<span>Dark Mode</span>
+					<mat-slide-toggle [checked]="isDarkMode" (change)="toggleDarkMode()" (click)="$event.stopPropagation()"></mat-slide-toggle>
+				</div>
+			</mat-menu>
+		</div>
+	</div>
 }

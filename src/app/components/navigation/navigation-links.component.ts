@@ -22,19 +22,19 @@ interface Link {
 @Component({
 	selector: 'app-navigation-links',
 	imports: [
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatButtonToggleModule,
-    FaIconComponent,
-    MatButtonModule,
-    RouterLink,
-    RouterModule,
-    MatMenuTrigger,
-    MatMenu,
-    MatSlideToggle,
-    MatMenuItem
-],
+		MatToolbarModule,
+		MatSidenavModule,
+		MatListModule,
+		MatButtonToggleModule,
+		FaIconComponent,
+		MatButtonModule,
+		RouterLink,
+		RouterModule,
+		MatMenuTrigger,
+		MatMenu,
+		MatSlideToggle,
+		MatMenuItem
+	],
 	templateUrl: './navigation-links.component.html',
 	styleUrls: ['./navigation-links.component.scss']
 })
