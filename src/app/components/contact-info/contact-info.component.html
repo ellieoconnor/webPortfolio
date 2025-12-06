@@ -2,10 +2,12 @@
 <mat-divider></mat-divider>
 <p>If you'd like to get in touch, you can reach me using the following methods.</p>
 <div class="contact-items">
-	<div class="contact-item" *ngFor="let item of contactItems">
-		<h2>{{ item.label }}</h2>
-		<a [href]="item.href" target="_blank">
-			<fa-icon [icon]="item.icon" size="2x"></fa-icon>
-		</a>
-	</div>
+	@for (item of contactItems; track item) {
+		<div class="contact-item">
+			<h2>{{ item.label }}</h2>
+			<a [href]="item.href" target="_blank">
+				<fa-icon [icon]="item.icon" size="2x"></fa-icon>
+			</a>
+		</div>
+	}
 </div>

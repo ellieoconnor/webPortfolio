@@ -1,8 +1,10 @@
 <!-- app.component.html -->
 <div>
-	<div class="modal-overlay" *ngIf="isLoading">
-		<!-- Modal overlay to show during loading, controlled by an ngIf directive -->
-	</div>
+	@if (isLoading) {
+		<div class="modal-overlay">
+			<!-- Modal overlay to show during loading, controlled by an ngIf directive -->
+		</div>
+	}
 
 	<div class="container" #websiteContent>
 		<!-- Header section with Angular Material toolbar -->

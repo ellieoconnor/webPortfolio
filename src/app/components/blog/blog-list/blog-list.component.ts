@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../blog.service';
 import { Router, RouterModule } from '@angular/router';
-import { NgForOf } from '@angular/common';
+
 import { MatDivider } from '@angular/material/divider';
-import { HttpClientModule } from '@angular/common/http';
 import { BlogPost } from '../blog-post.model';
 
 @Component({
 	selector: 'app-blog-list',
-	standalone: true,
-	imports: [RouterModule, NgForOf, MatDivider],
+	imports: [RouterModule, MatDivider],
 	templateUrl: './blog-list.component.html',
 	styleUrl: './blog-list.component.scss'
 })

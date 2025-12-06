@@ -4,7 +4,6 @@ import { FeaturedItemsComponent } from '../../featured-items/featured-items.comp
 
 @Component({
 	selector: 'app-home-page',
-	standalone: true,
 	imports: [AboutHeaderComponent, FeaturedItemsComponent],
 	templateUrl: './home-page.component.html',
 	styleUrl: './home-page.component.scss'

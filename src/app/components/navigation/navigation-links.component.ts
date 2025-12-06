@@ -1,11 +1,11 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { faHamburger, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import { MatButtonModule } from '@angular/material/button';
 import { ThemeLogicService } from '../theme-logic.service';
 import { RouterLink, RouterModule } from '@angular/router';
@@ -21,9 +21,7 @@ interface Link {
 
 @Component({
 	selector: 'app-navigation-links',
-	standalone: true,
 	imports: [
-		CommonModule,
 		MatToolbarModule,
 		MatSidenavModule,
 		MatListModule,

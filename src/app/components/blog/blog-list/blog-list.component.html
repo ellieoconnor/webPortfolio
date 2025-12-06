@@ -1,8 +1,10 @@
 <h1>Writing</h1>
 <mat-divider></mat-divider>
-<div class="post-summary" *ngFor="let posts of posts" (click)="getBlogPost(posts.slug)">
-	<h2>{{ posts.title }}</h2>
-	<span class="published-date">Published on {{ posts.datePublished }}</span>
-	<p class="summaries">{{ posts.summary }}</p>
-	<mat-divider></mat-divider>
-</div>
+@for (posts of posts; track posts) {
+	<div class="post-summary" (click)="getBlogPost(posts.slug)">
+		<h2>{{ posts.title }}</h2>
+		<span class="published-date">Published on {{ posts.datePublished }}</span>
+		<p class="summaries">{{ posts.summary }}</p>
+		<mat-divider></mat-divider>
+	</div>
+}

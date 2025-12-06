@@ -10,7 +10,6 @@ import { MatButton } from '@angular/material/button';
 
 @Component({
 	selector: 'app-featured-items',
-	standalone: true,
 	imports: [CommonModule, MatCardModule, FontAwesomeModule, RouterLink, MatButton],
 	templateUrl: './featured-items.component.html',
 	styleUrls: ['./featured-items.component.scss']

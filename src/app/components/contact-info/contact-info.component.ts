@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDivider } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
-import { NgForOf } from '@angular/common';
+
 import { FaIconComponent, IconDefinition } from '@fortawesome/angular-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -15,8 +15,7 @@ interface ContactItem {
 
 @Component({
 	selector: 'app-contact-info',
-	standalone: true,
-	imports: [MatDivider, RouterModule, NgForOf, FaIconComponent],
+	imports: [MatDivider, RouterModule, FaIconComponent],
 	templateUrl: './contact-info.component.html',
 	styleUrl: './contact-info.component.scss'
 })

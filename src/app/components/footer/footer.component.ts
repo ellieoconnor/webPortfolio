@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { MatNavList } from '@angular/material/list';
-import { DatePipe, NgForOf } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 @Component({
 	selector: 'app-footer',
-	standalone: true,
-	imports: [FaIconComponent, MatNavList, NgForOf, DatePipe],
+	imports: [MatNavList, DatePipe],
 	template: `
 		<mat-nav-list class="navigation-item-container">
 			<div class="foot-container">

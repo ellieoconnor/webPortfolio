@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { NavigationLinksComponent } from './components/navigation/navigation-links.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterOutlet } from '@angular/router';
@@ -8,8 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 @Component({
 	selector: 'app-root',
-	standalone: true,
-	imports: [CommonModule, NavigationLinksComponent, MatToolbarModule, FooterComponent, RouterOutlet, HttpClientModule],
+	imports: [NavigationLinksComponent, MatToolbarModule, FooterComponent, RouterOutlet, HttpClientModule],
 	templateUrl: './app.component.html',
 	styleUrls: ['./app.component.scss']
 })
