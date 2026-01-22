@@ -1,10 +1,30 @@
+.projects-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 1.5rem;
+	width: 100%;
+}
+
 .border {
 	position: relative;
 	border-radius: var(--border-radius-cards);
 	padding: 4px;
 	box-sizing: border-box;
-	overflow: hidden;
+	background: linear-gradient(to right, #b0c8ed, #e3bae0);
+	height: 100%;
+}
+
+.project-card {
 	display: flex;
-	background: linear-gradient(to right, #b0c8ed, #e3bae0); /* Gradient background for the border */
-	width: 50%;
+	flex-direction: column;
+	border-radius: var(--border-radius-cards);
+	height: 100%;
+
+	mat-card-content {
+		flex-grow: 1;
+	}
+
+	mat-card-actions {
+		margin-top: auto;
+	}
 }
