@@ -1,54 +1,60 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, from, Observable, of, switchMap } from 'rxjs';
-import { marked } from 'marked';
-import { BlogPost } from './blog-post.model';
-import { InputValidationService } from '../../services/input-validation.service';
+import { catchError, map, Observable, of } from 'rxjs';
+import { BlogPost, DevToApiResponse } from './blog-post.model';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class BlogService {
-	private postsUrl = 'assets/posts/posts.json';
+	private readonly devToUsername = 'ellieoconnor';
+	private readonly devToApiUrl = 'https://dev.to/api/articles';
 
-	constructor(
-		private http: HttpClient,
-		private validationService: InputValidationService
-	) {
-		// Configure marked with security options
-		// We rely on Angular's DomSanitizer to sanitize the HTML output
-		marked.setOptions({
-			// Use breaks for better security
-			breaks: true,
-			gfm: true
-		});
-	}
+	constructor(private http: HttpClient) {}
 
 	getPostsList(): Observable<BlogPost[]> {
-		return this.http.get<BlogPost[]>(this.postsUrl);
-	}
+		const url = `${this.devToApiUrl}?username=${this.devToUsername}`;
 
-	getSinglePost(slug: string): Observable<string> {
-		// Additional server-side validation (defense in depth)
-		if (!this.validationService.validateSlug(slug)) {
-			console.error('Invalid slug provided to getSinglePost');
-			return of('<h1>Error</h1><p>Invalid blog post identifier.</p>');
-		}
-
-		const url = `/assets/posts/${slug}.md`;
-
-		return this.http.get(url, { responseType: 'text' }).pipe(
-			switchMap((markdown) => {
-				// Remove YAML metadata
-				const content = markdown.replace(/^---[\s\S]*?---\s*/, '');
-
-				// Handle asynchronous parsing with `marked.parse`
-				return from(Promise.resolve(marked.parse(content))); // Ensure compatibility with async return
-			}),
+		return this.http.get<DevToApiResponse[]>(url).pipe(
+			map((articles) => articles.map((article) => this.mapToBlogPost(article))),
 			catchError((error) => {
-				console.error('Error fetching post:', error);
-				return of('<h1>Error</h1><p>Post could not be loaded.</p>'); // Provide fallback content
+				console.error('Error fetching posts from dev.to:', error);
+				return of([]);
 			})
 		);
+	}
+
+	getSinglePost(articleId: number): Observable<{ post: BlogPost; bodyHtml: string } | null> {
+		if (!articleId || articleId <= 0) {
+			console.error('Invalid article ID provided');
+			return of(null);
+		}
+
+		const url = `${this.devToApiUrl}/${articleId}`;
+
+		return this.http.get<DevToApiResponse>(url).pipe(
+			map((article) => ({
+				post: this.mapToBlogPost(article),
+				bodyHtml: article.body_html || ''
+			})),
+			catchError((error) => {
+				console.error('Error fetching post from dev.to:', error);
+				return of(null);
+			})
+		);
+	}
+
+	private mapToBlogPost(article: DevToApiResponse): BlogPost {
+		return {
+			id: article.id,
+			title: article.title,
+			slug: article.slug,
+			description: article.description,
+			publishedAt: new Date(article.published_at),
+			coverImage: article.cover_image || undefined,
+			url: article.url,
+			readingTimeMinutes: article.reading_time_minutes,
+			tagList: article.tag_list || []
+		};
 	}
 }

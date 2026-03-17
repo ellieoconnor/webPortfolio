@@ -16,7 +16,7 @@ export const routes: Routes = [
 		loadComponent: () => import('./components/blog/blog-list/blog-list.component').then((m) => m.BlogListComponent)
 	},
 	{
-		path: 'blog/:slug',
+		path: 'blog/:id',
 		loadComponent: () => import('./components/blog/blog-post/blog-post.component').then((m) => m.BlogPostComponent)
 	},
 	// todo eo: implement a wild card route

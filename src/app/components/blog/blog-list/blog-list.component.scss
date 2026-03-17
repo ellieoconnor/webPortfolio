@@ -6,11 +6,16 @@ h2 {
 	cursor: pointer;
 }
 
-.published-date {
+.published-date,
+.reading-time {
 	font-size: 0.8rem;
 	color: gray;
 	font-family: monospace;
 	margin: 0;
+}
+
+.reading-time {
+	margin-left: 1rem;
 }
 
 .summaries {

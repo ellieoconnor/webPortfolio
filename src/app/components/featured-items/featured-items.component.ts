@@ -33,14 +33,14 @@ export class FeaturedItemsComponent implements OnInit {
 	constructor(private blogService: BlogService) {}
 
 	ngOnInit() {
-		this.blogService.getPostsList().subscribe(
-			(posts: BlogPost[]) => {
-				// Filter only featured posts and limit it by the top 3
-				this.blogPosts = posts.filter((post) => post.isFeatured).slice(0, 3);
+		this.blogService.getPostsList().subscribe({
+			next: (posts: BlogPost[]) => {
+				// Show the top 3 most recent posts
+				this.blogPosts = posts.slice(0, 3);
 			},
-			(error) => {
+			error: (error) => {
 				console.error('Error fetching posts:', error);
 			}
-		);
+		});
 	}
 }

@@ -3,16 +3,28 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BlogPostComponent } from './blog-post.component';
 import { BlogService } from '../blog.service';
 import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
+import { BlogPost } from '../blog-post.model';
 
 describe('BlogPostComponent', () => {
 	let component: BlogPostComponent;
 	let fixture: ComponentFixture<BlogPostComponent>;
-	let blogServiceMoc: any;
+	let blogServiceMock: any;
 	let activatedRouteMock: any;
 
+	const mockPost: BlogPost = {
+		id: 123,
+		title: 'Test Post',
+		slug: 'test-post',
+		description: 'Test description',
+		publishedAt: new Date('2023-01-01'),
+		url: 'https://dev.to/test/test-post',
+		readingTimeMinutes: 5,
+		tagList: ['angular', 'testing']
+	};
+
 	beforeEach(async () => {
-		blogServiceMoc = {
+		blogServiceMock = {
 			getSinglePost: jest.fn()
 		};
 
@@ -27,7 +39,7 @@ describe('BlogPostComponent', () => {
 		await TestBed.configureTestingModule({
 			imports: [BlogPostComponent],
 			providers: [
-				{ provide: BlogService, useValue: blogServiceMoc },
+				{ provide: BlogService, useValue: blogServiceMock },
 				{ provide: ActivatedRoute, useValue: activatedRouteMock }
 			]
 		}).compileComponents();
@@ -41,33 +53,58 @@ describe('BlogPostComponent', () => {
 	});
 
 	it('should fetch a single blog post on ngOnInit', () => {
-		const mockSlug = 'test-slug';
-		const mockPostHtml = '<h1>Test Post</h1>';
+		const mockId = '123';
+		const mockBodyHtml = '<h1>Test Post</h1>';
 
-		activatedRouteMock.snapshot.paramMap.get.mockReturnValue(mockSlug);
-		blogServiceMoc.getSinglePost.mockReturnValue(of(mockPostHtml));
+		activatedRouteMock.snapshot.paramMap.get.mockReturnValue(mockId);
+		blogServiceMock.getSinglePost.mockReturnValue(of({ post: mockPost, bodyHtml: mockBodyHtml }));
 
-		// act
 		component.ngOnInit();
 
-		// assert
-		expect(activatedRouteMock.snapshot.paramMap.get).toHaveBeenCalledWith('slug');
-		expect(blogServiceMoc.getSinglePost).toHaveBeenCalledWith(mockSlug);
-
-		component.postContent$?.subscribe((content) => {
-			expect(content).toBe(mockPostHtml);
-		});
+		expect(activatedRouteMock.snapshot.paramMap.get).toHaveBeenCalledWith('id');
+		expect(blogServiceMock.getSinglePost).toHaveBeenCalledWith(123);
+		expect(component.post).toEqual(mockPost);
+		expect(component.loading).toBe(false);
+		expect(component.error).toBe(false);
 	});
 
-	it('should not call BlogService if no slug is provided', () => {
-		// arrange
+	it('should set error when no id is provided', () => {
 		activatedRouteMock.snapshot.paramMap.get.mockReturnValue(null);
 
-		//act
 		component.ngOnInit();
 
-		//assert
-		expect(blogServiceMoc.getSinglePost).not.toHaveBeenCalled();
-		expect(component.postContent$).toBeNull();
+		expect(blogServiceMock.getSinglePost).not.toHaveBeenCalled();
+		expect(component.error).toBe(true);
+		expect(component.loading).toBe(false);
+	});
+
+	it('should set error when invalid id is provided', () => {
+		activatedRouteMock.snapshot.paramMap.get.mockReturnValue('invalid');
+
+		component.ngOnInit();
+
+		expect(blogServiceMock.getSinglePost).not.toHaveBeenCalled();
+		expect(component.error).toBe(true);
+		expect(component.loading).toBe(false);
+	});
+
+	it('should set error when service returns null', () => {
+		activatedRouteMock.snapshot.paramMap.get.mockReturnValue('123');
+		blogServiceMock.getSinglePost.mockReturnValue(of(null));
+
+		component.ngOnInit();
+
+		expect(component.error).toBe(true);
+		expect(component.loading).toBe(false);
+	});
+
+	it('should handle service error', () => {
+		activatedRouteMock.snapshot.paramMap.get.mockReturnValue('123');
+		blogServiceMock.getSinglePost.mockReturnValue(throwError(() => new Error('Network error')));
+
+		component.ngOnInit();
+
+		expect(component.error).toBe(true);
+		expect(component.loading).toBe(false);
 	});
 });

@@ -1,10 +1,11 @@
 <h1>Writing</h1>
 <mat-divider></mat-divider>
-@for (posts of posts; track posts) {
-	<div class="post-summary" (click)="getBlogPost(posts.slug)">
-		<h2>{{ posts.title }}</h2>
-		<span class="published-date">Published on {{ posts.datePublished }}</span>
-		<p class="summaries">{{ posts.summary }}</p>
+@for (post of posts; track post.id) {
+	<div class="post-summary" (click)="getBlogPost(post.id)">
+		<h2>{{ post.title }}</h2>
+		<span class="published-date">{{ post.publishedAt | date: 'longDate' }}</span>
+		<span class="reading-time">{{ post.readingTimeMinutes }} min read</span>
+		<p class="summaries">{{ post.description }}</p>
 		<mat-divider></mat-divider>
 	</div>
 }

@@ -9,7 +9,8 @@
     "test": "jest --coverage --coverageDirectory='./coverage'",
     "format": "prettier --write \"src/**/*.{ts,js,json,css,scss,html}\"",
     "format:check": "prettier --check 'src/**/*.{ts,js,json,css,scss,html}'",
-    "lint": "eslint . --ext .js,.ts"
+    "lint": "eslint . --ext .js,.ts",
+    "publish:devto": "node scripts/publish-to-devto.js"
   },
   "private": true,
   "dependencies": {
@@ -30,14 +31,14 @@
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/free-regular-svg-icons": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
-    "@types/jest": "^29.5.14",
+    "@types/jest": "^30.0.0",
     "@typescript-eslint/eslint-plugin": "^8.48.1",
     "@typescript-eslint/parser": "^8.19.1",
     "eslint": "^9.39.1",
     "jest-preset-angular": "^16.1.1",
     "marked": "^15.0.6",
     "rxjs": "~7.8.0",
-    "ts-jest": "^29.2.5",
+    "ts-jest": "^29.3.0",
     "tslib": "^2.3.0",
     "webpack-bundle-analyzer": "^4.10.2",
     "zone.js": "~0.15.1"
@@ -49,7 +50,7 @@
     "@types/marked": "^6.0.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "jest": "^29.7.0",
+    "jest": "^30.0.0",
     "prettier": "3.3.3",
     "prettier-eslint": "^16.3.0",
     "prettier-plugin-organize-attributes": "^1.0.0",

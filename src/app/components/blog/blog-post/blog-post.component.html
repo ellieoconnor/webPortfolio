@@ -1,10 +1,30 @@
-@if (postContent$ | async; as postContent) {
-	<article [innerHTML]="postContent"></article>
-} @else {
+@if (loading) {
+	<p>Loading...</p>
+} @else if (error || !post) {
 	<h1>Post Not Found</h1>
 	<p>The blog post you are looking for does not exist.</p>
-}
-
-@if ((postContent$ | async) === null) {
-	<h3>An error occurred while loading the post.</h3>
+} @else {
+	<article class="blog-post">
+		@if (post.coverImage) {
+			<img class="cover-image" [src]="post.coverImage" [alt]="post.title" />
+		}
+		<header>
+			<h1>{{ post.title }}</h1>
+			<div class="post-meta">
+				<span class="published-date">{{ post.publishedAt | date: 'longDate' }}</span>
+				<span class="reading-time">{{ post.readingTimeMinutes }} min read</span>
+			</div>
+			@if (post.tagList.length > 0) {
+				<div class="tags">
+					@for (tag of post.tagList; track tag) {
+						<span class="tag">#{{ tag }}</span>
+					}
+				</div>
+			}
+		</header>
+		<div class="content" [innerHTML]="postContent"></div>
+		<footer>
+			<a [href]="post.url" target="_blank" rel="noopener">View on dev.to</a>
+		</footer>
+	</article>
 }
