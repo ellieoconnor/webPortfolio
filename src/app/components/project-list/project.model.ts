@@ -9,6 +9,13 @@ export interface ProjectInfo {
 
 export const PROJECTS: ProjectInfo[] = [
 	{
+		title: 'Anki Voice',
+		description:
+			'Answer your Anki flashcards out loud and get graded by AI. Uses the Web Speech API to capture spoken answers, then Claude grades responses and offers tutoring on what you missed.',
+		techUsed: ['JavaScript', 'HTML', 'CSS', 'Claude API', 'Web Speech API'],
+		githubUrl: 'https://github.com/ellieoconnor/anki-voice.git'
+	},
+	{
 		title: 'Legend of Zelda - Breath of the Wild Compendium',
 		description:
 			'A lookup tool for creatures, weapons, monsters and treasures from Breath of the Wild. Users can search items or use categories to explore. Built using the Hyrule Compendium API.',
