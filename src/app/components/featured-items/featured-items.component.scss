@@ -23,6 +23,16 @@
 	width: 33%;
 }
 
+@media (max-width: 768px) {
+	.featured-items-container {
+		flex-direction: column;
+	}
+
+	.border {
+		width: 100%;
+	}
+}
+
 .border mat-card {
 	border-radius: inherit; /* Match the parent's border-radius for consistency */
 	background-color: var(--sys-background); /* Ensure the card content is visible */
