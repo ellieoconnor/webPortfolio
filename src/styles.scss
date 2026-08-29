@@ -32,9 +32,15 @@ body {
 	height: 100vh;
 	width: 90%;
 	max-width: 950px;
-	min-width: 600px; // somewhat arbitrary min width, for forms to look "OK" and to know their min boundary.
 	font-size: 16px;
 	font-family: 'Metropolis', 'Nunito', 'Inter', sans-serif;
+}
+
+@media (min-width: 600px) {
+	html,
+	body {
+		min-width: 600px; // arbitrary min width, for forms to look "OK" on larger screens
+	}
 }
 
 header {
