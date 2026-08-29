@@ -36,7 +36,12 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "_headers",
+                "input": "public",
+                "output": "."
+              }
             ],
             "styles": [
               "src/m3-theme.scss",

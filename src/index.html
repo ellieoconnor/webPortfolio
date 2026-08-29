@@ -7,23 +7,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-		<!-- Content Security Policy -->
+		<!-- Content Security Policy (fallback only).
+		     Browsers ignore frame-ancestors/sandbox/report-uri when CSP is delivered via <meta>,
+		     and X-Frame-Options / X-Content-Type-Options are HTTP-header-only and do nothing here at all.
+		     The enforced versions of all of these live in public/_headers (Netlify). -->
 		<meta
 			http-equiv="Content-Security-Policy"
 			content="default-src 'self';
-					script-src 'self' 'unsafe-inline';
+					script-src 'self';
 					style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
 					font-src 'self' https://fonts.gstatic.com;
 					img-src 'self' data: https:;
 					connect-src 'self' https://dev.to;
-					frame-ancestors 'none';
 					base-uri 'self';
 					form-action 'self';" />
-
-		<!-- Security Headers -->
-		<meta http-equiv="X-Content-Type-Options" content="nosniff" />
-		<meta http-equiv="X-Frame-Options" content="DENY" />
-		<meta http-equiv="X-XSS-Protection" content="1; mode=block" />
 		<meta name="referrer" content="strict-origin-when-cross-origin" />
 		<!-- Preconnect Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
