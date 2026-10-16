@@ -88,6 +88,32 @@ describe('BlogService', () => {
 		req.flush(mockSingleArticle);
 	});
 
+	it('should split a comma-separated tag_list string from the single-article endpoint', () => {
+		const articleId = 123;
+		const mockSingleArticle: DevToApiResponse = {
+			...mockApiResponse[0],
+			tag_list: '100devs, python, postgres',
+			body_html: ''
+		};
+
+		service.getSinglePost(articleId).subscribe((result) => {
+			expect(result!.post.tagList).toEqual(['100devs', 'python', 'postgres']);
+		});
+
+		httpTestingController.expectOne(`https://dev.to/api/articles/${articleId}`).flush(mockSingleArticle);
+	});
+
+	it('should return an empty tag list when tag_list is an empty string', () => {
+		const articleId = 123;
+		const mockSingleArticle: DevToApiResponse = { ...mockApiResponse[0], tag_list: '', body_html: '' };
+
+		service.getSinglePost(articleId).subscribe((result) => {
+			expect(result!.post.tagList).toEqual([]);
+		});
+
+		httpTestingController.expectOne(`https://dev.to/api/articles/${articleId}`).flush(mockSingleArticle);
+	});
+
 	it('should return null for invalid article ID', () => {
 		service.getSinglePost(-1).subscribe((result) => {
 			expect(result).toBeNull();
