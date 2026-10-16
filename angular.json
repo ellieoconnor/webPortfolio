@@ -38,7 +38,7 @@
               "src/favicon.ico",
               "src/assets",
               {
-                "glob": "_headers",
+                "glob": "**/*",
                 "input": "public",
                 "output": "."
               }
