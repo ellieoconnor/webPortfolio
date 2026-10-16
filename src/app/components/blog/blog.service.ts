@@ -9,11 +9,15 @@ import { BlogPost, DevToApiResponse } from './blog-post.model';
 export class BlogService {
 	private readonly devToUsername = 'ellieoconnor';
 	private readonly devToApiUrl = 'https://dev.to/api/articles';
+	// dev.to's CDN can serve a stale article list for hours. Changing the URL every
+	// 5 minutes forces a fresh cache entry, so new posts show up within minutes.
+	private readonly cacheBustIntervalMs = 5 * 60 * 1000;
 
 	constructor(private http: HttpClient) {}
 
 	getPostsList(): Observable<BlogPost[]> {
-		const url = `${this.devToApiUrl}?username=${this.devToUsername}`;
+		const cacheBust = Math.floor(Date.now() / this.cacheBustIntervalMs);
+		const url = `${this.devToApiUrl}?username=${this.devToUsername}&_=${cacheBust}`;
 
 		return this.http.get<DevToApiResponse[]>(url).pipe(
 			map((articles) => articles.map((article) => this.mapToBlogPost(article))),

@@ -42,8 +42,17 @@ describe('BlogService', () => {
 		httpTestingController = TestBed.inject(HttpTestingController);
 	});
 
+	// Fixed time so the cache-bust param is predictable: 1,000,000,000 ms / 300,000 ms = bucket 3333
+	const fixedNow = 1_000_000_000;
+	const expectedListUrl = 'https://dev.to/api/articles?username=ellieoconnor&_=3333';
+
+	beforeEach(() => {
+		jest.spyOn(Date, 'now').mockReturnValue(fixedNow);
+	});
+
 	afterEach(() => {
 		httpTestingController.verify();
+		jest.restoreAllMocks();
 	});
 
 	it('should fetch the blog posts list from dev.to', () => {
@@ -55,7 +64,7 @@ describe('BlogService', () => {
 			expect(posts[1].coverImage).toBe('https://example.com/image.jpg');
 		});
 
-		const req = httpTestingController.expectOne('https://dev.to/api/articles?username=ellieoconnor');
+		const req = httpTestingController.expectOne(expectedListUrl);
 		expect(req.request.method).toEqual('GET');
 		req.flush(mockApiResponse);
 	});
@@ -99,12 +108,21 @@ describe('BlogService', () => {
 		req.flush('Not Found', { status: 404, statusText: 'Not Found' });
 	});
 
+	it('should change the cache-bust param once the 5 minute window passes', () => {
+		service.getPostsList().subscribe();
+		httpTestingController.expectOne(expectedListUrl).flush([]);
+
+		jest.spyOn(Date, 'now').mockReturnValue(fixedNow + 5 * 60 * 1000);
+		service.getPostsList().subscribe();
+		httpTestingController.expectOne('https://dev.to/api/articles?username=ellieoconnor&_=3334').flush([]);
+	});
+
 	it('should return empty array when fetching posts list fails', () => {
 		service.getPostsList().subscribe((posts) => {
 			expect(posts).toEqual([]);
 		});
 
-		const req = httpTestingController.expectOne('https://dev.to/api/articles?username=ellieoconnor');
+		const req = httpTestingController.expectOne(expectedListUrl);
 		req.flush('Error', { status: 500, statusText: 'Server Error' });
 	});
 });
