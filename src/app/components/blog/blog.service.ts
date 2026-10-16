@@ -58,7 +58,20 @@ export class BlogService {
 			coverImage: article.cover_image || undefined,
 			url: article.url,
 			readingTimeMinutes: article.reading_time_minutes,
-			tagList: article.tag_list || []
+			tagList: this.toTagList(article.tag_list)
 		};
+	}
+
+	private toTagList(tagList: string[] | string | null | undefined): string[] {
+		if (!tagList) {
+			return [];
+		}
+		if (Array.isArray(tagList)) {
+			return tagList;
+		}
+		return tagList
+			.split(',')
+			.map((tag) => tag.trim())
+			.filter((tag) => tag.length > 0);
 	}
 }

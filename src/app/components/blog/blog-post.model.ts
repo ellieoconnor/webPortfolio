@@ -25,6 +25,6 @@ export interface DevToApiResponse {
 	cover_image: string | null;
 	url: string;
 	reading_time_minutes: number;
-	tag_list: string[];
+	tag_list: string[] | string; // array from the list endpoint, comma-separated string from the single-article endpoint
 	body_html?: string;
 }
