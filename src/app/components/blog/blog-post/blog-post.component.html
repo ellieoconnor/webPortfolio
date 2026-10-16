@@ -6,7 +6,7 @@
 } @else {
 	<article class="blog-post">
 		@if (post.coverImage) {
-			<img class="cover-image" [src]="post.coverImage" [alt]="post.title" />
+			<img class="cover-image" [ngSrc]="post.coverImage" width="1000" height="420" priority alt="" />
 		}
 		<header>
 			<h1>{{ post.title }}</h1>

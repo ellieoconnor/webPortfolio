@@ -1,13 +1,13 @@
 import { Component, OnInit, SecurityContext } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BlogService } from '../blog.service';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule, DatePipe, NgOptimizedImage } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BlogPost } from '../blog-post.model';
 
 @Component({
 	selector: 'app-blog-post',
-	imports: [CommonModule, DatePipe],
+	imports: [CommonModule, DatePipe, NgOptimizedImage],
 	templateUrl: './blog-post.component.html',
 	styleUrl: './blog-post.component.scss'
 })

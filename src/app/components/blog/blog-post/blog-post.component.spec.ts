@@ -68,6 +68,28 @@ describe('BlogPostComponent', () => {
 		expect(component.error).toBe(false);
 	});
 
+	it('should render a decorative cover image when the post has one', () => {
+		const coverImage = 'https://media2.dev.to/cover.png';
+		activatedRouteMock.snapshot.paramMap.get.mockReturnValue('123');
+		blogServiceMock.getSinglePost.mockReturnValue(of({ post: { ...mockPost, coverImage }, bodyHtml: '' }));
+
+		fixture.detectChanges();
+
+		const img: HTMLImageElement | null = fixture.nativeElement.querySelector('img.cover-image');
+		expect(img).not.toBeNull();
+		expect(img?.getAttribute('src')).toBe(coverImage);
+		expect(img?.getAttribute('alt')).toBe('');
+	});
+
+	it('should not render a cover image when the post has none', () => {
+		activatedRouteMock.snapshot.paramMap.get.mockReturnValue('123');
+		blogServiceMock.getSinglePost.mockReturnValue(of({ post: mockPost, bodyHtml: '' }));
+
+		fixture.detectChanges();
+
+		expect(fixture.nativeElement.querySelector('img.cover-image')).toBeNull();
+	});
+
 	it('should set error when no id is provided', () => {
 		activatedRouteMock.snapshot.paramMap.get.mockReturnValue(null);
 
